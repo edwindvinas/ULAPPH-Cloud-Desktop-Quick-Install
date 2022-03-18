@@ -10,7 +10,7 @@ echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 echo "This script is dangerous! Don't execute if not sure!"
 echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 read -p "WARNING!!! Are you sure you want to setup Golang? This will erase existing installation if ever. [y/n]" -n 1 -r
-echo    # (optional) move to a new line
+#echo    # (optional) move to a new line
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     # do dangerous stuff
