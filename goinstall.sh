@@ -7,6 +7,8 @@ VERSION="1.17.3"
 [ -z "$GOROOT" ] && GOROOT="$HOME/.go"
 [ -z "$GOPATH" ] && GOPATH="$HOME/go"
 
+rm -rf $HOME/.go
+
 OS="$(uname -s)"
 ARCH="$(uname -m)"
 
