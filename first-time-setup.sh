@@ -71,5 +71,6 @@ echo "========================================"
 echo "========================================"
 echo -e "${CYAN}Listing directories... ${NC}\n"
 ls -la 
-echo -e "You can go to the below directory: \n${GREEN}$MAIN/edwindvinas ${NC}\n"
+echo -e "You can go to the below directory: \n${GREEN}$MAIN ${NC}\n"
+cd $MAIN
 echo "========================================"
