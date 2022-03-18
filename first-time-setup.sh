@@ -39,6 +39,26 @@ echo -e "${GREEN}Downloaded... ${NC}${CYAN} $THIS  ${NC}\n"
 echo "========================================"
 
 echo "========================================"
+THIS="ULAPPH-Cloud-Desktop-CTL"
+THIS_ABOUT="ULAPP-Cloud-Desktop install controller"
+THIS_GIT="https://github.com/edwindvinas/ULAPPH-Cloud-Desktop-CTL.git"
+echo -e "${YELLOW}$THIS"
+echo -e "${NC}$THIS_ABOUT"
+echo -e "${NC}$THIS_GIT"
+echo -e "${RED}Downloading...${NC}${CYAN} $THIS  ${NC}\n"
+PWD=`pwd`
+echo "Your Current Directory: " $PWD
+MAIN=`cd .. && pwd`
+echo "Will clone under Main Directory: " $MAIN
+OLD=${MAIN}/${THIS}
+echo "Removing old directory: " $OLD
+rm -rf ${OLD}
+cd $MAIN && git clone $THIS_GIT
+echo -e "${GREEN}Downloaded... ${NC}${CYAN} $THIS  ${NC}\n"
+echo "========================================"
+
+echo "========================================"
 echo -e "${CYAN}Listing directories... ${NC}\n"
 cd $MAIN && ls -la 
+echo -e "You can go to the below directory: \n${GREEN}$MAIN${NC}\n"
 echo "========================================"
