@@ -105,6 +105,18 @@ echo -e "${GREEN}Installed... ${NC}${CYAN} dependencies  ${NC}\n"
 echo "========================================"
 
 echo "========================================"
+THIS="ULAPPH-Cloud-Desktop-Quick-Installer"
+THIS_ABOUT="ULAPP-Cloud-Desktop installing in GCP-GCE-Ubuntu-Linux"
+echo -e "${YELLOW}$THIS"
+echo -e "${RED}Installing server...${NC}${CYAN} GCP-GCE-Ubuntu-Linux  ${NC}\n"
+PWD=`pwd`
+echo "Your Current Directory: " $PWD
+INS_SCRIPT=quick_install_ulapph_GCE_VM_Ubuntu.sh
+cd ../$THIS && ./$INS_SCRIPT
+echo -e "${GREEN}Installed server... ${NC}${CYAN} GCP-GCE-Ubuntu-Linux  ${NC}\n"
+echo "========================================"
+
+echo "========================================"
 echo -e "${CYAN}Listing directories... ${NC}\n"
 ls -la 
 echo -e "You can go to the below directory: \n${GREEN}$MAIN ${NC}\n"
