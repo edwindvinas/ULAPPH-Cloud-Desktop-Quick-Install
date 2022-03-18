@@ -16,7 +16,7 @@ set -e
 
 VERSION="1.17.3"
 
-[ -z "$GOROOT" ] && GOROOT="$HOME/.go"
+[ -z "$GOROOT" ] && GOROOT="$HOME/go"
 [ -z "$GOPATH" ] && GOPATH="$HOME/go"
 echo -e "${YELLOW}Go Programming Language${NC}"
 echo -e "${RED}!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
