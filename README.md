@@ -3,6 +3,7 @@ This repo contains scripts used to install/setup ULAPPH Cloud Desktop based on t
 
 ## Google Cloud Compute Engine (GCE) VM with Ubuntu Linux
 This will install ULAPPH in a Virtual Machine (VM) in Google Cloud - Compute Engine (GCE) with Ubuntu Linux.
+NOTE: Do this only on a fresh VM only.
 ```
 wget https://raw.githubusercontent.com/edwindvinas/ULAPPH-Cloud-Desktop-Quick-Install/main/goinstall.sh && chmod +x ./goinstall.sh && ./goinstall.sh
 ```
