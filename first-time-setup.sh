@@ -85,7 +85,10 @@ echo -e "${YELLOW}$THIS"
 echo -e "${RED}Initializing ...${NC}${CYAN} go mod  ${NC}\n"
 PWD=`pwd`
 echo "Your Current Directory: " $PWD
-cd ${THIS} && go mod init
+cd $THIS
+PWD=`pwd`
+echo "Your Current Directory: " $PWD
+go mod init
 echo -e "${GREEN}Initialized... ${NC}${CYAN} go mod  ${NC}\n"
 echo "========================================"
 
@@ -96,7 +99,7 @@ echo -e "${YELLOW}$THIS"
 echo -e "${RED}Installing ...${NC}${CYAN} dependencies  ${NC}\n"
 PWD=`pwd`
 echo "Your Current Directory: " $PWD
-cd ../$THIS && chmod +x gogetall.sh
+cd ../$THIS && chmod +x
 ./gogetall.sh
 echo -e "${GREEN}Installed... ${NC}${CYAN} dependencies  ${NC}\n"
 echo "========================================"
