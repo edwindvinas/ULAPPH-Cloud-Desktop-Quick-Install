@@ -20,19 +20,6 @@ echo -e ${CYAN}"*** First-time setup script ***"
 echo -e ${CYAN}"====================================="
 
 echo "========================================"
-THIS="Golang"
-THIS_ABOUT="Golang is the base programnming language used for ULAPPH-Cloud-Desktop"
-THIS_URL="https://go.dev/"
-echo -e "${YELLOW}$THIS"
-echo -e "${NC}$THIS_ABOUT"
-echo -e "${NC}$THIS_URL"
-echo -e "${RED}Installing... ${NC}${CYAN} $THIS  ${NC}\n"
-rm -rf ../.go
-./goinstall.sh
-echo -e "${GREEN}Installed... ${NC}${CYAN} $THIS  ${NC}\n"
-echo "========================================"
-
-echo "========================================"
 THIS="ULAPPH-Cloud-Desktop"
 THIS_ABOUT="ULAPP-Cloud-Desktop contains the Golang, JS, HTML, CSS codes"
 THIS_GIT="https://github.com/edwindvinas/ULAPPH-Cloud-Desktop.git"
