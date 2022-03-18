@@ -1,4 +1,4 @@
-### ULAPPH Cloud Desktop - Quick Install
+# ULAPPH Cloud Desktop - Quick Install
 This repo contains scripts used to install/setup ULAPPH Cloud Desktop based on the target platform. Please select the platform for you.
 
 ## Google Cloud Compute Engine (GCE) VM with Ubuntu Linux
