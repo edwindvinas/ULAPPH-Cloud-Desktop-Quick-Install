@@ -3,18 +3,7 @@
 #For each target project ID, execute configure and install
 
 #!!!! EDIT THIS !!!!
-#Installation type (local, gae)
-#local-windows - Windows laptop, desktop
-#local-linux - Windows laptop, desktop
-#gae - google appengine
-#gcr - google cloud run
-#gke - gogole kubernetes engine
-#android  - app for Android
-INSTYPE=local-linux 
-#INSTYPE=gae
-#INSTYPE=gcr 
-#INSTYPE=android
-#INSTYPE=gke
+INSTYPE=gcp-gce-ubuntu-linux 
 
 #!!!! EDIT THIS !!!!
 #Home Directory where this script is located
@@ -22,10 +11,8 @@ INSTYPE=local-linux
 # quick-install-ulapph - the quick installer
 # ULAPPH-Cloud-Desktop-Configs/ - contains configurations for each project
 # ULAPPH-Cloud-Desktop/ - contains the source codes of ULAPPH Cloud Desktop
-# Sample HOME for Windows with Gitbash
-HOME=/c/Users/edwin.d.vinas/go/src/github.com/edwindvinas
-# Sample HOME for Google Cloud Shell
-#HOME=/home/ulapph/gopath/src/github.com/edwindvinas
+# HOME folder
+HOME=~/go/src/github.com/edwindvinas
 
 #!!!! EDIT THIS !!!!
 #Google Account 
@@ -44,29 +31,14 @@ VERSION=afritada
 
 #!!!! EDIT THIS !!!!
 #List ulapph to be deployed or installed
+#Should refer to the YAML filename w/o .yaml
 array=(
-#"edwin-daen-vinas" \
-#"ulapph" \
-"ulapph-demo-local" \
-#"ulapph-demo-cr" \
-#"ulapph-demo" \
-#"ulapph-portal" \
+"ulapph-gcp-gce-ubuntu" \
 )
 
 #!!!!! STOP EDITS HERE !!!!!!!
 echo "Welcome to ULAPPH Cloud Desktop - Quick Installation Tool"
-#echo "First, lets execute \"go vet main.go\""
-#cd $HOME/ULAPPH-Cloud-Desktop/
-#result=$(go vet main.go)
-#if [[ $? != 0 ]]; then
-#    echo "*********** $? ***************"
-#elif [[ $result ]]; then
-#    echo "*********** Compile error: Please fix the code issues first. ***************"
-#	exit 1
-#else
-#	echo "Success: go vet executed: No errors found"
-#fi
-#echo "Great, code does not have syntax errors..."
+
 echo 'Installing ulapph cloud desktop...'
 echo "Number of targets: ${#array[*]}"
 for ix in ${!array[*]}
@@ -83,7 +55,7 @@ do
 	cp main.go main.go.dev
 	
 	case "$INSTYPE" in
-	"local-linux") 	
+	"gcp-gce-ubuntu-linux") 	
 				echo "*** Installation Type is LOCAL ***"
 				echo "Configuring project: " $PROJECT_ID
 				cd $HOME/ULAPPH-Cloud-Desktop-Configs/
