@@ -1,15 +1,27 @@
 #!/bin/bash
 # shellcheck disable=SC2016
+RED='\033[0;31m'
+CYAN='\033[0;36m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+echo -e ${CYAN}"====================================="
+echo -e ${CYAN}"Welcome to ULAPPH Cloud Desktop!"
+echo -e ${CYAN}"*** First-time setup script ***"
+echo -e ${CYAN}"*** It will install Go & then ULAPPH... ***"
+echo -e ${CYAN}"====================================="
+
 set -e
 
 VERSION="1.17.3"
 
 [ -z "$GOROOT" ] && GOROOT="$HOME/.go"
 [ -z "$GOPATH" ] && GOPATH="$HOME/go"
-echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+echo -e "${RED}!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 echo "This script is dangerous! Don't execute if not sure!"
-echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-read -p "WARNING!!! Are you sure you want to setup Golang? This will erase existing installation if ever. [y/n]" -n 1 -r
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!${NC}"
+read -p "${RED}WARNING!!!${NC} Are you sure you want to setup Golang? This will erase existing installation if ever. [y/n]" -n 1 -r
 #echo    # (optional) move to a new line
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
