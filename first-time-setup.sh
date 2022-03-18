@@ -79,6 +79,28 @@ echo -e "${GREEN}Downloaded... ${NC}${CYAN} $THIS  ${NC}\n"
 echo "========================================"
 
 echo "========================================"
+THIS="(Go Mod Init) ULAPPH-Cloud-Desktop"
+THIS_ABOUT="ULAPP-Cloud-Desktop initializing go mod"
+echo -e "${YELLOW}$THIS"
+echo -e "${RED}Initializing ...${NC}${CYAN} go mod  ${NC}\n"
+PWD=`pwd`
+echo "Your Current Directory: " $PWD
+MAIN=`cd $THIS && go mod init`
+echo -e "${GREEN}Initialized... ${NC}${CYAN} go mod  ${NC}\n"
+echo "========================================"
+
+echo "========================================"
+THIS="(Gogetall.sh) ULAPPH-Cloud-Desktop"
+THIS_ABOUT="ULAPP-Cloud-Desktop installing dependencies"
+echo -e "${YELLOW}$THIS"
+echo -e "${RED}Installing ...${NC}${CYAN} dependencies  ${NC}\n"
+PWD=`pwd`
+echo "Your Current Directory: " $PWD
+MAIN=`chmod +x gogetall.sh`
+echo -e "${GREEN}Installed... ${NC}${CYAN} dependencies  ${NC}\n"
+echo "========================================"
+
+echo "========================================"
 echo -e "${CYAN}Listing directories... ${NC}\n"
 ls -la 
 echo -e "You can go to the below directory: \n${GREEN}$MAIN ${NC}\n"
