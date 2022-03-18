@@ -46,11 +46,22 @@ echo -e "${YELLOW}$THIS"
 echo -e "${NC}$THIS_ABOUT"
 echo -e "${NC}$THIS_GIT"
 echo -e "${RED}Downloading...${NC}${CYAN} $THIS  ${NC}\n"
-#PWD=`pwd`
-#echo "Your Current Directory: " $PWD
-#MAIN=`cd .. && pwd`
-#echo "Will clone under Main Directory: " $MAIN
-#OLD=${MAIN}/${THIS}
+
+echo "Removing old directory: " $OLD
+rm -rf ${THIS}
+git clone $THIS_GIT
+echo -e "${GREEN}Downloaded... ${NC}${CYAN} $THIS  ${NC}\n"
+echo "========================================"
+
+echo "========================================"
+THIS="ULAPPH-Cloud-Desktop-Configs"
+THIS_ABOUT="ULAPP-Cloud-Desktop-Configs contains YAML configurations"
+THIS_GIT="https://github.com/edwindvinas/ULAPPH-Cloud-Desktop-Configs.git"
+echo -e "${YELLOW}$THIS"
+echo -e "${NC}$THIS_ABOUT"
+echo -e "${NC}$THIS_GIT"
+echo -e "${RED}Downloading...${NC}${CYAN} $THIS  ${NC}\n"
+
 echo "Removing old directory: " $OLD
 rm -rf ${THIS}
 git clone $THIS_GIT
