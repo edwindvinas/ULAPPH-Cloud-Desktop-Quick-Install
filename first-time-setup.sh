@@ -51,6 +51,10 @@ echo "Removing old directory: " $OLD
 rm -rf ${THIS}
 git clone $THIS_GIT
 echo -e "${GREEN}Downloaded... ${NC}${CYAN} $THIS  ${NC}\n"
+
+echo -e "${RED}Building...${NC}${CYAN} ulapphctl  ${NC}\n"
+cd $THIS && go build
+cd $THIS && ls -la
 echo "========================================"
 
 echo "========================================"
