@@ -10,7 +10,7 @@
 #gcr - google cloud run
 #gke - gogole kubernetes engine
 #android  - app for Android
-INSTYPE=local-windows 
+INSTYPE=local-linux 
 #INSTYPE=gae
 #INSTYPE=gcr 
 #INSTYPE=android

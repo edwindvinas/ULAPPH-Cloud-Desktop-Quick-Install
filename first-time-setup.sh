@@ -1,6 +1,57 @@
 #!/bin/bash
-echo "====================================="
-echo "Welcome to ULAPPH Cloud Desktop!"
-echo "*** First-time setup script ***"
-echo "====================================="
+#Black        0;30     Dark Gray     1;30
+#Red          0;31     Light Red     1;31
+#Green        0;32     Light Green   1;32
+#Brown/Orange 0;33     Yellow        1;33
+#Blue         0;34     Light Blue    1;34
+#Purple       0;35     Light Purple  1;35
+#Cyan         0;36     Light Cyan    1;36
+#Light Gray   0;37     White         1;37
 
+RED='\033[0;31m'
+CYAN='\033[0;36m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+echo -e ${CYAN}"====================================="
+echo -e ${CYAN}"Welcome to ULAPPH Cloud Desktop!"
+echo -e ${CYAN}"*** First-time setup script ***"
+echo -e ${CYAN}"====================================="
+
+echo "========================================"
+THIS="Golang"
+THIS_ABOUT="Golang is the base programnming language used for ULAPPH-Cloud-Desktop"
+THIS_URL="https://go.dev/"
+echo -e "${YELLOW}$THIS"
+echo -e "${NC}$THIS_ABOUT"
+echo -e "${NC}$THIS_URL"
+echo -e "${RED}Installing... ${NC}${CYAN} $THIS  ${NC}\n"
+rm -rf ../.go
+./goinstall.sh
+echo -e "${GREEN}Installed... ${NC}${CYAN} $THIS  ${NC}\n"
+echo "========================================"
+
+echo "========================================"
+THIS="ULAPPH-Cloud-Desktop"
+THIS_ABOUT="ULAPP-Cloud-Desktop contains the Golang, JS, HTML, CSS codes"
+THIS_GIT="https://github.com/edwindvinas/ULAPPH-Cloud-Desktop.git"
+echo -e "${YELLOW}$THIS"
+echo -e "${NC}$THIS_ABOUT"
+echo -e "${NC}$THIS_GIT"
+echo -e "${RED}Downloading...${NC}${CYAN} $THIS  ${NC}\n"
+PWD=`pwd`
+echo "Your Current Directory: " $PWD
+MAIN=`cd .. && pwd`
+echo "Will clone under Main Directory: " $MAIN
+OLD=${MAIN}/${THIS}
+echo "Removing old directory: " $OLD
+rm -rf ${OLD}
+cd $MAIN && git clone $THIS_GIT
+echo -e "${GREEN}Downloaded... ${NC}${CYAN} $THIS  ${NC}\n"
+echo "========================================"
+
+echo "========================================"
+echo -e "${CYAN}Listing directories... ${NC}\n"
+cd $MAIN && ls -la 
+echo "========================================"
