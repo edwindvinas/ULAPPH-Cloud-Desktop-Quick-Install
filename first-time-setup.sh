@@ -105,7 +105,7 @@ echo -e "${GREEN}Installed... ${NC}${CYAN} dependencies  ${NC}\n"
 echo "========================================"
 
 echo "========================================"
-THIS="ULAPPH-Cloud-Desktop-Quick-Installer"
+THIS="ULAPPH-Cloud-Desktop-Quick-Install"
 THIS_ABOUT="ULAPP-Cloud-Desktop installing in GCP-GCE-Ubuntu-Linux"
 echo -e "${YELLOW}$THIS"
 echo -e "${RED}Installing server...${NC}${CYAN} GCP-GCE-Ubuntu-Linux  ${NC}\n"
