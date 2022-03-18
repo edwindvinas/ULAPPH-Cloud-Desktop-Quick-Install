@@ -57,9 +57,9 @@ PWD=`pwd`
 echo "Your Current Directory: " $PWD
 cd $THIS && go build ulapphctl.go && ls -la
 echo "Copying ulapphctl to GOBIN folder..."
-cp ulapphctl $GOBIN/bin/
+cp ulapphctl ~/go/bin/
 echo "Checking ulapphctl in GOBIN folder..."
-ls -la $GOBIN/bin/ulapphctl
+ls -la ~/go/bin/ulapphctl
 echo "========================================"
 
 echo "========================================"
