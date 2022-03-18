@@ -6,8 +6,16 @@ VERSION="1.17.3"
 
 [ -z "$GOROOT" ] && GOROOT="$HOME/.go"
 [ -z "$GOPATH" ] && GOPATH="$HOME/go"
-
-rm -rf $HOME/.go
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+echo "This script is dangerous! Don't execute if not sure!"
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+read -p "WARNING!!! Are you sure you want to setup Golang? This will erase existing installation if ever. [y/n]" -n 1 -r
+echo    # (optional) move to a new line
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    # do dangerous stuff
+    rm -rf $GOROOT
+fi
 
 OS="$(uname -s)"
 ARCH="$(uname -m)"
@@ -159,3 +167,12 @@ mkdir -p "${GOPATH}/"{src,pkg,bin}
 rm -f "$TEMP_DIRECTORY/go.tar.gz"
 source $shell_profile
 go version
+mkdir -p $GOPATH/src/github.com/edwindvinas
+cd $GOPATH/src/github.com/edwindvinas
+rm -rf ULAPPH-Cloud-Desktop-Quick-Install
+git clone https://github.com/edwindvinas/ULAPPH-Cloud-Desktop-Quick-Install.git
+cd ULAPPH-Cloud-Desktop-Quick-Install
+chmod +x first-time-setup.sh
+./first-time-setup.sh
+
+
