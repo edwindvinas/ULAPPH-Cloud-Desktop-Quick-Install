@@ -68,6 +68,7 @@ do
 				cd $HOME/ULAPPH-Cloud-Desktop/
 				mv main2.go main.go
 				echo "Executing go build main.go"
+				go mod tidy
 				go build main.go
 				echo "Cleaning up project: " $PROJECT_ID
 				$HOME/ULAPPH-Cloud-Desktop-CTL/ulapphctl devstart 
