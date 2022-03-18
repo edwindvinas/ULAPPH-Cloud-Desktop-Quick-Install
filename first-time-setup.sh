@@ -68,6 +68,7 @@ echo -e "${NC}$THIS_GIT"
 echo -e "${RED}Downloading...${NC}${CYAN} $THIS  ${NC}\n"
 
 echo "Removing old directory: " $OLD
+cd ..
 rm -rf ${THIS}
 git clone $THIS_GIT
 echo -e "${GREEN}Downloaded... ${NC}${CYAN} $THIS  ${NC}\n"
