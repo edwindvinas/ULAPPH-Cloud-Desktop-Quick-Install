@@ -161,6 +161,7 @@ if [ "$shell" == "fish" ]; then
         echo '# GoLang'
         echo "set GOROOT '${GOROOT}'"
         echo "set GOPATH '$GOPATH'"
+        echo "set GOBIN '$GOPATH/bin'"
         echo 'set PATH $GOPATH/bin $GOROOT/bin $PATH'
     } >> "$shell_profile"
 else
@@ -169,6 +170,7 @@ else
         echo "export GOROOT=${GOROOT}"
         echo 'export PATH=$GOROOT/bin:$PATH'
         echo "export GOPATH=$GOPATH"
+        echo "export GOBIN=$GOPATH/bin"
         echo 'export PATH=$GOPATH/bin:$PATH'
     } >> "$shell_profile"
 fi
