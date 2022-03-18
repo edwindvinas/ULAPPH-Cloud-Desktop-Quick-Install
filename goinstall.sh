@@ -6,11 +6,11 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
-echo -e ${CYAN}"====================================="
+echo -e ${CYAN}"============================================="
 echo -e ${CYAN}"Welcome to ULAPPH Cloud Desktop!"
 echo -e ${CYAN}"*** First-time setup script ***"
 echo -e ${CYAN}"*** It will install Go & then ULAPPH... ***"
-echo -e ${CYAN}"====================================="
+echo -e ${CYAN}"============================================="
 
 set -e
 
@@ -19,9 +19,9 @@ VERSION="1.17.3"
 [ -z "$GOROOT" ] && GOROOT="$HOME/.go"
 [ -z "$GOPATH" ] && GOPATH="$HOME/go"
 echo -e "${RED}!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-echo "This script is dangerous! Don't execute if not sure!"
-echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!${NC}"
-read -p "${RED}WARNING!!!${NC} Are you sure you want to setup Golang? This will erase existing installation if ever. [y/n]" -n 1 -r
+echo -e "This script is dangerous! Don't execute if not sure!"
+echo -e "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!${NC}"
+read -p "WARNING!!! Are you sure you want to setup Golang? This will erase existing installation if ever. [y/n] " -n 1 -r
 #echo    # (optional) move to a new line
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
