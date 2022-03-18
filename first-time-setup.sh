@@ -78,19 +78,19 @@ git clone $THIS_GIT
 echo -e "${GREEN}Downloaded... ${NC}${CYAN} $THIS  ${NC}\n"
 echo "========================================"
 
-echo "========================================"
-THIS="ULAPPH-Cloud-Desktop"
-THIS_ABOUT="ULAPP-Cloud-Desktop initializing go mod"
-echo -e "${YELLOW}$THIS"
-echo -e "${RED}Initializing ...${NC}${CYAN} go mod  ${NC}\n"
-PWD=`pwd`
-echo "Your Current Directory: " $PWD
-cd $THIS
-PWD=`pwd`
-echo "Your Current Directory: " $PWD
-go mod init
-echo -e "${GREEN}Initialized... ${NC}${CYAN} go mod  ${NC}\n"
-echo "========================================"
+#echo "========================================"
+#THIS="ULAPPH-Cloud-Desktop"
+#THIS_ABOUT="ULAPP-Cloud-Desktop initializing go mod"
+#echo -e "${YELLOW}$THIS"
+#echo -e "${RED}Initializing ...${NC}${CYAN} go mod  ${NC}\n"
+#PWD=`pwd`
+#echo "Your Current Directory: " $PWD
+#cd $THIS
+#PWD=`pwd`
+#echo "Your Current Directory: " $PWD
+#go mod init
+#echo -e "${GREEN}Initialized... ${NC}${CYAN} go mod  ${NC}\n"
+#echo "========================================"
 
 echo "========================================"
 THIS="ULAPPH-Cloud-Desktop"
@@ -101,7 +101,7 @@ PWD=`pwd`
 echo "Your Current Directory: " $PWD
 cd ../$THIS && chmod +x gogetall.sh
 ./gogetall.sh
-go mod tidy
+#go mod tidy
 echo -e "${GREEN}Installed... ${NC}${CYAN} dependencies  ${NC}\n"
 echo "========================================"
 
