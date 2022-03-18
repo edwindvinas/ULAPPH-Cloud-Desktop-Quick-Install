@@ -18,6 +18,7 @@ VERSION="1.17.3"
 
 [ -z "$GOROOT" ] && GOROOT="$HOME/.go"
 [ -z "$GOPATH" ] && GOPATH="$HOME/go"
+echo -e "${YELLOW}Go Programming Language${NC}"
 echo -e "${RED}!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 echo -e "This script is dangerous! Don't execute if not sure!"
 echo -e "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!${NC}"
