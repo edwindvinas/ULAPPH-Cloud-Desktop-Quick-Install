@@ -56,7 +56,7 @@ do
 	
 	case "$INSTYPE" in
 	"gcp-gce-ubuntu-linux") 	
-				echo "*** Installation Type is LOCAL ***"
+				echo "*** Installation Type is ${INSTYPE} ***"
 				echo "Configuring project: " $PROJECT_ID
 				cd $HOME/ULAPPH-Cloud-Desktop-Configs/
 				echo "Configuration used: " $PROJECT_ID
