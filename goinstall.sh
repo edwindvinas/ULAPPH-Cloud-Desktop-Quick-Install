@@ -7,11 +7,194 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 echo -e ${CYAN}"============================================="
-echo -e ${YELLOW}"Welcome to ULAPPH Cloud Desktop!"
+echo -e ${CYAN}"Welcome to ULAPPH Cloud Desktop!"
 echo -e ${CYAN}"*** First-time setup script ***"
-echo -e ${CYAN}"*** It will install docker first if not installed..."
-echo -e ${CYAN}"*** then it will install ULAPPH in Docker... ***"
+echo -e ${CYAN}"*** It will install Go & then ULAPPH... ***"
 echo -e ${CYAN}"============================================="
+
+FL_GO_NOT_FOUND=false
+if [ -x "$(command -v go)" ]; then
+        echo -e ${GREEN} "Found Golang, will not install golang..."
+        # command
+else
+        echo -e ${RED} "Golang Not Found, will install golang..."
+	FL_GO_NOT_FOUND=true
+fi
+
+if [ FL_GO_NOT_FOUND == true ]; then
+
+set -e
+
+VERSION="1.17.3"
+
+[ -z "$GOROOT" ] && GOROOT="$HOME/go"
+[ -z "$GOPATH" ] && GOPATH="$HOME/go"
+echo -e "${YELLOW}Go Programming Language${NC}"
+echo -e "${RED}!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+echo -e "This script is dangerous! Don't execute if not sure!"
+echo -e "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!${NC}"
+read -p "WARNING!!! Are you sure you want to setup Golang? This will erase existing installation if ever. [y/n] " -n 1 -r
+#echo    # (optional) move to a new line
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    # do dangerous stuff
+    rm -rf $GOROOT
+fi
+
+OS="$(uname -s)"
+ARCH="$(uname -m)"
+
+case $OS in
+    "Linux")
+        case $ARCH in
+        "x86_64")
+            ARCH=amd64
+            ;;
+        "aarch64")
+            ARCH=arm64
+            ;;
+        "armv6" | "armv7l")
+            ARCH=armv6l
+            ;;
+        "armv8")
+            ARCH=arm64
+            ;;
+        .*386.*)
+            ARCH=386
+            ;;
+        esac
+        PLATFORM="linux-$ARCH"
+    ;;
+    "Darwin")
+        PLATFORM="darwin-amd64"
+    ;;
+esac
+
+print_help() {
+    echo "Usage: bash goinstall.sh OPTIONS"
+    echo -e "\nOPTIONS:"
+    echo -e "  --remove\tRemove currently installed version"
+    echo -e "  --version\tSpecify a version number to install"
+}
+
+if [ -z "$PLATFORM" ]; then
+    echo "Your operating system is not supported by the script."
+    exit 1
+fi
+
+if [ -n "$($SHELL -c 'echo $ZSH_VERSION')" ]; then
+    shell_profile="$HOME/.zshrc"
+elif [ -n "$($SHELL -c 'echo $BASH_VERSION')" ]; then
+    shell_profile="$HOME/.bashrc"
+elif [ -n "$($SHELL -c 'echo $FISH_VERSION')" ]; then
+    shell="fish"
+    if [ -d "$XDG_CONFIG_HOME" ]; then
+        shell_profile="$XDG_CONFIG_HOME/fish/config.fish"
+    else
+        shell_profile="$HOME/.config/fish/config.fish"
+    fi
+fi
+
+if [ "$1" == "--remove" ]; then
+    rm -rf "$GOROOT"
+    if [ "$OS" == "Darwin" ]; then
+        if [ "$shell" == "fish" ]; then
+            sed -i "" '/# GoLang/d' "$shell_profile"
+            sed -i "" '/set GOROOT/d' "$shell_profile"
+            sed -i "" '/set GOPATH/d' "$shell_profile"
+            sed -i "" '/set PATH $GOPATH\/bin $GOROOT\/bin $PATH/d' "$shell_profile"
+        else
+            sed -i "" '/# GoLang/d' "$shell_profile"
+            sed -i "" '/export GOROOT/d' "$shell_profile"
+            sed -i "" '/$GOROOT\/bin/d' "$shell_profile"
+            sed -i "" '/export GOPATH/d' "$shell_profile"
+            sed -i "" '/$GOPATH\/bin/d' "$shell_profile"
+        fi
+    else
+        if [ "$shell" == "fish" ]; then
+            sed -i '/# GoLang/d' "$shell_profile"
+            sed -i '/set GOROOT/d' "$shell_profile"
+            sed -i '/set GOPATH/d' "$shell_profile"
+            sed -i '/set PATH $GOPATH\/bin $GOROOT\/bin $PATH/d' "$shell_profile"
+        else
+            sed -i '/# GoLang/d' "$shell_profile"
+            sed -i '/export GOROOT/d' "$shell_profile"
+            sed -i '/$GOROOT\/bin/d' "$shell_profile"
+            sed -i '/export GOPATH/d' "$shell_profile"
+            sed -i '/$GOPATH\/bin/d' "$shell_profile"
+        fi
+    fi
+    echo "Go removed."
+    exit 0
+elif [ "$1" == "--help" ]; then
+    print_help
+    exit 0
+elif [ "$1" == "--version" ]; then
+    if [ -z "$2" ]; then # Check if --version has a second positional parameter
+        echo "Please provide a version number for: $1"
+    else
+        VERSION=$2
+    fi
+elif [ ! -z "$1" ]; then
+    echo "Unrecognized option: $1"
+    exit 1
+fi
+
+if [ -d "$GOROOT" ]; then
+    echo "The Go install directory ($GOROOT) already exists. Exiting."
+    exit 1
+fi
+
+PACKAGE_NAME="go$VERSION.$PLATFORM.tar.gz"
+TEMP_DIRECTORY=$(mktemp -d)
+
+echo "Downloading $PACKAGE_NAME ..."
+if hash wget 2>/dev/null; then
+    wget https://storage.googleapis.com/golang/$PACKAGE_NAME -O "$TEMP_DIRECTORY/go.tar.gz"
+else
+    curl -o "$TEMP_DIRECTORY/go.tar.gz" https://storage.googleapis.com/golang/$PACKAGE_NAME
+fi
+
+if [ $? -ne 0 ]; then
+    echo "Download failed! Exiting."
+    exit 1
+fi
+
+echo "Extracting File..."
+mkdir -p "$GOROOT"
+
+tar -C "$GOROOT" --strip-components=1 -xzf "$TEMP_DIRECTORY/go.tar.gz"
+
+echo "Configuring shell profile in: $shell_profile"
+touch "$shell_profile"
+if [ "$shell" == "fish" ]; then
+    {
+        echo '# GoLang'
+        echo "set GOROOT '${GOROOT}'"
+        echo "set GOPATH '$GOPATH'"
+        echo "set GOBIN '$GOPATH/bin'"
+        echo 'set PATH $GOPATH/bin $GOROOT/bin $PATH'
+    } >> "$shell_profile"
+else
+    {
+        echo '# GoLang'
+        echo "export GOROOT=${GOROOT}"
+        echo 'export PATH=$GOROOT/bin:$PATH'
+        echo "export GOPATH=$GOPATH"
+        echo "export GOBIN=$GOPATH/bin"
+        echo 'export PATH=$GOPATH/bin:$PATH'
+    } >> "$shell_profile"
+fi
+
+mkdir -p "${GOPATH}/"{src,pkg,bin}
+#echo -e "\nGo $VERSION was installed into $GOROOT.\nMake sure to relogin into your shell or run:"
+#echo -e "\n\tsource $shell_profile\n\nto update your environment variables."
+#echo "Tip: Opening a new terminal window usually just works. :)"
+rm -f "$TEMP_DIRECTORY/go.tar.gz"
+source $shell_profile
+go version
+
+fi
 
 echo -e ${RED} "Creating ulapph-temp folder..."
 cd $HOME && rm -rf ulapph-temp && mkdir ulapph-temp
@@ -19,14 +202,14 @@ cd ulapph-temp
 git clone https://github.com/edwindvinas/ULAPPH-Cloud-Desktop-Quick-Install.git
 cd ULAPPH-Cloud-Desktop-Quick-Install
 if [ -x "$(command -v docker)" ]; then
-    	echo -e ${GREEN} "Found docker, will not install docker..."
-    	# command
+        echo -e ${GREEN} "Found docker, will not install docker..."
+        # command
 else
-    	echo -e ${RED} "Docker Not Found, will install docker..."
-    	# command
-	chmod +x docker-install.sh
-	./docker-install.sh
-    	echo -e ${GREEN} "Done, docker install..."
+        echo -e ${RED} "Docker Not Found, will install docker..."
+        # command
+        chmod +x docker-install.sh
+        ./docker-install.sh
+        echo -e ${GREEN} "Done, docker install..."
 fi
 chmod +x first-time-setup.sh
 ./first-time-setup.sh
