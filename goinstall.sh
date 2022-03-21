@@ -13,6 +13,7 @@ echo -e ${CYAN}"*** It will install Go & then ULAPPH... ***"
 echo -e ${CYAN}"============================================="
 
 cd $HOME && rm -rf ulapph-temp && mkdir ulapph-temp
+cd ulapph-temp
 git clone https://github.com/edwindvinas/ULAPPH-Cloud-Desktop-Quick-Install.git
 cd ULAPPH-Cloud-Desktop-Quick-Install
 chmod +x docker-install.sh

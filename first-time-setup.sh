@@ -92,35 +92,35 @@ echo "========================================"
 #echo -e "${GREEN}Initialized... ${NC}${CYAN} go mod  ${NC}\n"
 #echo "========================================"
 
-echo "========================================"
-THIS="ULAPPH-Cloud-Desktop"
-THIS_ABOUT="ULAPP-Cloud-Desktop installing dependencies"
-echo -e "${YELLOW}$THIS"
-echo -e "${RED}Installing ...${NC}${CYAN} dependencies  ${NC}\n"
-PWD=`pwd`
-echo "Your Current Directory: " $PWD
-cd $THIS && chmod +x gogetall.sh
-sed -i 's/go\ get\ /go\ get\ -u\ /' gogetall.sh 
-./gogetall.sh
+#echo "========================================"
+#THIS="ULAPPH-Cloud-Desktop"
+#THIS_ABOUT="ULAPP-Cloud-Desktop installing dependencies"
+#echo -e "${YELLOW}$THIS"
+#echo -e "${RED}Installing ...${NC}${CYAN} dependencies  ${NC}\n"
+#PWD=`pwd`
+#echo "Your Current Directory: " $PWD
+#cd $THIS && chmod +x gogetall.sh
+#sed -i 's/go\ get\ /go\ get\ -u\ /' gogetall.sh 
+#./gogetall.sh
 #go mod tidy
-echo -e "${GREEN}Installed... ${NC}${CYAN} dependencies  ${NC}\n"
-echo "========================================"
+#echo -e "${GREEN}Installed... ${NC}${CYAN} dependencies  ${NC}\n"
+#echo "========================================"
 
 echo "========================================"
 THIS="ULAPPH-Cloud-Desktop-Quick-Install"
 THIS_ABOUT="ULAPP-Cloud-Desktop installing in Docker"
 echo -e "${YELLOW}$THIS"
-echo -e "${RED}Installing server...${NC}${CYAN} Docker  ${NC}\n"
+echo -e "${RED}Installing server...${NC}${CYAN} ULAPPH in Docker  ${NC}\n"
 PWD=`pwd`
 echo "Your Current Directory: " $PWD
 INS_SCRIPT=quick_install_ulapph_DOCKER_GENERIC.sh
 cd ../$THIS && ./$INS_SCRIPT
-echo -e "${GREEN}Installed server... ${NC}${CYAN} Docker  ${NC}\n"
+echo -e "${GREEN}Installed server... ${NC}${CYAN} ULAPPH in Docker  ${NC}\n"
 echo "========================================"
 
-echo "========================================"
-echo -e "${CYAN}Listing directories... ${NC}\n"
-ls -la 
-echo -e "You can go to the below directory: \n${GREEN}$MAIN ${NC}\n"
-cd $MAIN
-echo "========================================"
+#echo "========================================"
+#echo -e "${CYAN}Listing directories... ${NC}\n"
+#ls -la 
+#echo -e "You can go to the below directory: \n${GREEN}$MAIN ${NC}\n"
+#cd $MAIN
+#echo "========================================"
