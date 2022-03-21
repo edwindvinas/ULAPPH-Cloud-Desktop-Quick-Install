@@ -16,8 +16,15 @@ cd $HOME && rm -rf ulapph-temp && mkdir ulapph-temp
 cd ulapph-temp
 git clone https://github.com/edwindvinas/ULAPPH-Cloud-Desktop-Quick-Install.git
 cd ULAPPH-Cloud-Desktop-Quick-Install
-chmod +x docker-install.sh
-./docker-install.sh
+if [ -x "$(command -v docker)" ]; then
+    	echo "Found docker, will not install docker..."
+    	# command
+else
+    	echo "Install docker"
+    	# command
+	chmod +x docker-install.sh
+	./docker-install.sh
+fi
 chmod +x first-time-setup.sh
 ./first-time-setup.sh
 

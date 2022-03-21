@@ -114,7 +114,8 @@ echo -e "${RED}Installing server...${NC}${CYAN} ULAPPH in Docker  ${NC}\n"
 PWD=`pwd`
 echo "Your Current Directory: " $PWD
 INS_SCRIPT=quick_install_ulapph_DOCKER_GENERIC.sh
-cd ../$THIS && ./$INS_SCRIPT
+#cd ../$THIS && ./$INS_SCRIPT
+./$INS_SCRIPT
 echo -e "${GREEN}Installed server... ${NC}${CYAN} ULAPPH in Docker  ${NC}\n"
 echo "========================================"
 
