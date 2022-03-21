@@ -6,11 +6,14 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
+SCRIPT_VERSION=0.1
 echo -e ${CYAN}"============================================="
 echo -e ${YELLOW}"Welcome to ULAPPH Cloud Desktop!"
 echo -e ${CYAN}"*** First-time setup script ***"
 echo -e ${CYAN}"*** It will install docker first if not installed..."
 echo -e ${CYAN}"*** then it will install ULAPPH in Docker... ***"
+echo -e ${CYAN}"============================================="
+echo -e ${CYAN}"Script Version: ${SCRIPT_VERSION}"
 echo -e ${CYAN}"============================================="
 
 FL_GO_NOT_FOUND=false
