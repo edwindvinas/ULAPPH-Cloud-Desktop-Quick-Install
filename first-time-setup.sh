@@ -65,16 +65,18 @@ echo "========================================"
 echo "========================================"
 THIS="ULAPPH-Cloud-Desktop-Configs"
 THIS_ABOUT="ULAPP-Cloud-Desktop-Configs contains YAML configurations"
-THIS_GIT="https://github.com/edwindvinas/ULAPPH-Cloud-Desktop-Configs.git"
+#THIS_GIT="https://github.com/edwindvinas/ULAPPH-Cloud-Desktop-Configs.git"
 echo -e "${YELLOW}$THIS"
 echo -e "${NC}$THIS_ABOUT"
-echo -e "${NC}$THIS_GIT"
+#echo -e "${NC}$THIS_GIT"
 echo -e "${RED}Downloading...${NC}${CYAN} $THIS  ${NC}\n"
 
 echo "Removing old directory: " $OLD
 cd ..
 rm -rf ${THIS}
-git clone $THIS_GIT
+#git clone $THIS_GIT
+echo "Copying from another folder..."
+cp -R ../ulapph-config/$THIS .
 echo -e "${GREEN}Downloaded... ${NC}${CYAN} $THIS  ${NC}\n"
 echo "========================================"
 
