@@ -12,7 +12,8 @@ INSTYPE=docker-generic
 # ULAPPH-Cloud-Desktop-Configs/ - contains configurations for each project
 # ULAPPH-Cloud-Desktop/ - contains the source codes of ULAPPH Cloud Desktop
 # HOME folder
-HOME=~/go/src/github.com/edwindvinas
+#HOME=~/go/src/github.com/edwindvinas
+HOME=~/ulapph-temp
 
 #!!!! EDIT THIS !!!!
 #Google Account 
@@ -26,7 +27,7 @@ VERBOSITY=debug
 
 #!!!! EDIT (optional) !!!!
 #Version
-VERSION=afritada
+VERSION=barbecue
 
 
 #!!!! EDIT THIS !!!!
