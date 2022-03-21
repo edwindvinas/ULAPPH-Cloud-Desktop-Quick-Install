@@ -187,6 +187,8 @@ cd $GOPATH/src/github.com/edwindvinas
 rm -rf ULAPPH-Cloud-Desktop-Quick-Install
 git clone https://github.com/edwindvinas/ULAPPH-Cloud-Desktop-Quick-Install.git
 cd ULAPPH-Cloud-Desktop-Quick-Install
+chmod +x docker-install.sh
+./docker-install.sh
 chmod +x first-time-setup.sh
 ./first-time-setup.sh
 

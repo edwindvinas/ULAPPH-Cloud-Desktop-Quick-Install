@@ -250,7 +250,7 @@ do
 				go run $HOME/ULAPPH-Cloud-Desktop-Watson/genUlapphAiMenu.go --output $HOME/ULAPPH-Cloud-Desktop/templates/ulapph-ai-menu.txt --inputs "$HOME/ULAPPH-Cloud-Desktop-Watson/00 - Intent Router.json" "$HOME/ULAPPH-Cloud-Desktop-Watson/10 - GoogleCloudPlatformAssistant.json" "$HOME/ULAPPH-Cloud-Desktop-Watson/99 - General.json"
 
 				echo "Building image..."
-                cd $HOME/ULAPPH-Cloud-Desktop/
+                		cd $HOME/ULAPPH-Cloud-Desktop/
 				sudo docker build -t ulapph-cloud-desktop .
 					
 				echo "Tagging image..."

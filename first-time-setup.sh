@@ -108,14 +108,14 @@ echo "========================================"
 
 echo "========================================"
 THIS="ULAPPH-Cloud-Desktop-Quick-Install"
-THIS_ABOUT="ULAPP-Cloud-Desktop installing in GCP-GCE-Ubuntu-Linux"
+THIS_ABOUT="ULAPP-Cloud-Desktop installing in Docker"
 echo -e "${YELLOW}$THIS"
-echo -e "${RED}Installing server...${NC}${CYAN} GCP-GCE-Ubuntu-Linux  ${NC}\n"
+echo -e "${RED}Installing server...${NC}${CYAN} Docker  ${NC}\n"
 PWD=`pwd`
 echo "Your Current Directory: " $PWD
-INS_SCRIPT=quick_install_ulapph_GCE_VM_Ubuntu.sh
+INS_SCRIPT=quick_install_ulapph_DOCKER_GENERIC.sh
 cd ../$THIS && ./$INS_SCRIPT
-echo -e "${GREEN}Installed server... ${NC}${CYAN} GCP-GCE-Ubuntu-Linux  ${NC}\n"
+echo -e "${GREEN}Installed server... ${NC}${CYAN} Docker  ${NC}\n"
 echo "========================================"
 
 echo "========================================"
