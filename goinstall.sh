@@ -6,7 +6,7 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
-SCRIPT_VERSION=0.1
+SCRIPT_VERSION=0.1.1
 echo -e ${CYAN}"============================================="
 echo -e ${YELLOW}"Welcome to ULAPPH Cloud Desktop!"
 echo -e ${CYAN}"*** First-time setup script ***"
