@@ -7,9 +7,10 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 echo -e ${CYAN}"============================================="
-echo -e ${CYAN}"Welcome to ULAPPH Cloud Desktop!"
+echo -e ${YELLOW}"Welcome to ULAPPH Cloud Desktop!"
 echo -e ${CYAN}"*** First-time setup script ***"
-echo -e ${CYAN}"*** It will install Go & then ULAPPH... ***"
+echo -e ${CYAN}"*** It will install docker first if not installed..."
+echo -e ${CYAN}"*** then it will install ULAPPH in Docker... ***"
 echo -e ${CYAN}"============================================="
 
 FL_GO_NOT_FOUND=false
