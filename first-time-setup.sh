@@ -100,6 +100,7 @@ echo -e "${RED}Installing ...${NC}${CYAN} dependencies  ${NC}\n"
 PWD=`pwd`
 echo "Your Current Directory: " $PWD
 cd $THIS && chmod +x gogetall.sh
+sed -i 's/go\ get\ /go\ get\ -u\ /' gogetall.sh 
 ./gogetall.sh
 #go mod tidy
 echo -e "${GREEN}Installed... ${NC}${CYAN} dependencies  ${NC}\n"
