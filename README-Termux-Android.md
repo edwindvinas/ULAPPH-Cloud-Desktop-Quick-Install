@@ -7,7 +7,9 @@
 
 # STEP1: Install F-Droid
 - Go to Android, open browser, search "f-droid" and open f-droid site
+```
 https://f-droid.org/
+```
 - You need to increase the timeout of your Android screen since some commands being executed may take some time.
 
 # STEP2a: Install Termux in Android
@@ -30,14 +32,21 @@ https://f-droid.org/
 
 # STEP3: Optional: Install Hacker's Keyboard
 - If you have relatively new Android device, no need to perform this.
+```
 https://play.google.com/store/apps/details?id=org.pocketworkstation.pckeyboard&hl=fil&gl=US
+```
 
 # STEP4: Optional: Install Git bash terminal in Windows
 - If you don't want to ssh from Windows to Android, skip to STEP8.
+```
 https://git-scm.com/download/win
+```
 
 # STEP5: Install ssh in Termux
+- Refer to the following page for more info
+```
 https://wiki.termux.com/wiki/Remote_Access
+```
 - Open Termux & execute the following commands:
 ```
 $ apt update && apt upgrade
@@ -87,7 +96,9 @@ $ ssh -p 8022 u0_a290@192.168.1.51
 # STEP6: Optional: Use Putty to connect to SSH from Windows
 - To connect to the Android Termux via Putty
 - Make sure to indicate SSH port 8022
+```
 https://chiark.greenend.org.uk/~sgtatham/putty/latest.html
+```
 
 # STEP7: Optional: Connect a bluetooth keyboard to your Android
 - This is good so that it will be easier to type the commands.
