@@ -1,7 +1,9 @@
-### ULAPPH Installation in Android Termux
-
-Installation Guide for Android
+# ULAPPH Installation in Android Termux
 ===============
+- Welcome to ULAPPH Installation Guide for Android
+- Turn your Android into a frontend and backend server
+- Basically, we will install Termux in your Android
+- Then, using Termux, we will install ULAPPH-Android-Desktop (an Android version of ULAPPH-Cloud-Desktop)
 
 # STEP1: Install F-Droid
 - Go to Android, open browser, search "f-droid" and open f-droid site
