@@ -38,11 +38,12 @@ https://play.google.com/store/apps/details?id=org.pocketworkstation.pckeyboard&h
 
 # STEP4: Optional: Install Git bash terminal in Windows
 - If you don't want to ssh from Windows to Android, skip to STEP8.
+- But, as per experience, it's too much faster if you will connect to your Android via ssh.
 ```
 https://git-scm.com/download/win
 ```
 
-# STEP5: Install ssh in Termux
+# STEP5a: Install ssh in Termux
 - Refer to the following page for more info
 ```
 https://wiki.termux.com/wiki/Remote_Access
@@ -61,7 +62,7 @@ $ ifconfig
 - Take note of the IP address beside inet. Example: 192.168.1.51
 ```
 
-# Connecting to Android via SSH
+# STEP5b: Connecting to Android via SSH
 - To connect from Windows Gitbash to your Android, we need to setup proper ssh keys.
 - This involves copying your Windows ssh keys to Android.
 - On Windows terminal such as Git bash:
@@ -136,9 +137,11 @@ drwx------  3 u0_a4 u0_a4     3488 Aug  1 01:18 ULAPPH-Cloud-Desktop-Watson
 ```
 
 # STEP11: Download the Quick Install repo from Github.
+- These commands maybe challenging to type in your Android, so it is better to use SSH terminal.
+- Please refer to STEP5 if you would want to use SSH. Otherwise, please proceed below.
 ```
 $ cd ~
-$ mkdir -P ~/go/src/github.com/edwindvinas/
+$ mkdir -p ~/go/src/github.com/edwindvinas/
 $ cd ~/go/src/github.com/edwindvinas/
 $ git clone https://source.developers.google.com/p/edwin-daen-vinas/r/ULAPPH-Cloud-Desktop-Quick-Install
 $ cd ~/go/src/github.com/edwindvinas/ULAPPH-Cloud-Desktop-Quick-Install
