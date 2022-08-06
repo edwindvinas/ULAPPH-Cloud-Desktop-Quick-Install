@@ -123,7 +123,7 @@ go version go1.18.3 android/arm64
 - First, go to Google Cloud Source Repositories to "Generate and store your Git credentials".
 ```
 $ cd ~/go/src/github.com/edwindvinas/
-$ git clone https://source.developers.google.com/p/edwin-daen-vinas/r/ULAPPH-Cloud-Desktop-Quick-Install
+$ git clone https://github.com/edwindvinas/ULAPPH-Cloud-Desktop-Quick-Install.git 
 $ cd ~/go/src/github.com/edwindvinas/ULAPPH-Cloud-Desktop-Quick-Install
 $ ./ulapph_download_initial_setup.sh
 $ ls -la ~/go/src/github.com/edwindvinas/
