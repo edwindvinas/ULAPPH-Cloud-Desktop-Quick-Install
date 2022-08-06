@@ -66,6 +66,10 @@ echo -e "${Yellow}Downloading ULAPPH-Android-Desktop-Configs...${NC}"
 echo -e "###############################################"
 cd $WORKDIR 
 git clone https://github.com/edwindvinas/ULAPPH-Cloud-Desktop-Configs.git
+# Create a dummy firebase json file
+cd ~/go/src/github.com/edwindvinas/
+cd ULAPPH-Cloud-Desktop-Configs
+touch ulapph-firebase-2018-11-24.json
 
 echo -e "###############################################"
 echo -e "${Yellow}Downloading ULAPPH-Android-Desktop-Watson...${NC}"
