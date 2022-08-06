@@ -29,6 +29,7 @@ https://f-droid.org/
 - Install from F-Droid
 - Open F-Droid app
 - Search & Install "Termux-Widget"
+- Enable the "Display over other apps" permission
 
 # STEP2d: Setup Fingerprint in Android 
 - Running ULAPPH requires fingerprint auth, we need to setup fingerprint in Android. 
@@ -304,13 +305,54 @@ run_ulapph.sh  stop_ulapph.sh  update_ulapph.sh
 
 # STEP22: Executing shortcut commands via CLI 
 - For example, to upgrade ULAPPH via CLI
+- But it would be convenient to use the Termux Widget
 ```
 $ cd ~
 $ source setalias_ulapph.sh
 $ short
+$ ls -la
+total 32
+drwx------ 9 u0_a257 u0_a257 3452 Aug  7 02:50 .
+drwx------ 8 u0_a257 u0_a257 3452 Aug  7 04:19 ..
+drwx------ 2 u0_a257 u0_a257 3452 Aug  7 02:50 ai
+drwx------ 2 u0_a257 u0_a257 3452 Aug  7 02:50 crontab
+drwx------ 2 u0_a257 u0_a257 3452 Aug  7 02:50 filebrowser
+drwx------ 2 u0_a257 u0_a257 3452 Aug  7 02:50 ssh
+drwx------ 2 u0_a257 u0_a257 3452 Aug  7 02:50 syncthing
+drwx------ 2 u0_a257 u0_a257 3452 Aug  7 02:50 tasks
+drwx------ 2 u0_a257 u0_a257 3452 Aug  7 02:50 ulapph
 $ cd ulapph
 $ ./update_ulapph.sh
 ```
+
+# STEP23: Running & Accessing the File Manager webapp
+- At this point, the opensource File Browser has been installed
+```
+https://github.com/edwindvinas/filebrowser
+```
+- Go to the Termux Widget
+- To run the File Browser aka File Manager, you can use the following from the Widget:
+```
+-rwx------ 1 u0_a290 u0_a290 65536 Aug  6 14:18 filebrowser.db
+-rwx------ 1 u0_a290 u0_a290   298 Aug  6 14:18 filebrowser_disable.sh
+-rwx------ 1 u0_a290 u0_a290   568 Aug  6 14:18 filebrowser_enable.sh
+```
+- To access the File Manager
+```
+http://192.168.1.125:9090
+```
+
+# STEP24: Running and Accessing the SyncThing webapp
+- To run the SyncThing, you can use the following from the Widget:
+```
+-rwx------ 1 u0_a290 u0_a290  291 Aug  6 14:18 syncthing_disable.sh
+-rwx------ 1 u0_a290 u0_a290  570 Aug  6 14:18 syncthing_enable.sh
+```
+- To access the File Manager
+```
+https://192.168.1.125:8334
+```
+
 
 #######################################################
 # OPTIONAL STEPS
