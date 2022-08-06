@@ -30,6 +30,9 @@ https://f-droid.org/
 - Open F-Droid app
 - Search & Install "Termux-Widget"
 
+# STEP2d: Setup Fingerprint in Android 
+- Running ULAPPH requires fingerprint auth, we need to setup fingerprint in Android. 
+
 # STEP3: Optional: Install Hacker's Keyboard
 - If you have relatively new Android device, no need to perform this.
 ```
@@ -277,6 +280,27 @@ https://192.168.1.125:8443
 - If you have widgets, you can execute commands directly from widget.
 - For example for enabling disabling  ULAPPH system, sshd, file manager or syncthing etc...
 - You can even use the widget for executing automatic upgrade...
+- These commands are available as in Termux Android widget:
+```
+./ai:
+ulapphspeak.sh
+
+./crontab:
+crontab.txt  crontab_disable.sh  crontab_enable.sh
+
+./filebrowser:
+filebrowser.db  filebrowser_disable.sh  filebrowser_enable.sh
+
+./ssh:
+ssh_disable.sh  ssh_enable.sh
+
+./syncthing:
+syncthing_disable.sh  syncthing_enable.sh
+
+./ulapph:
+run_ulapph.sh  stop_ulapph.sh  update_ulapph.sh
+
+```
 
 # STEP22: Executing shortcut commands via CLI 
 - For example, to upgrade ULAPPH via CLI

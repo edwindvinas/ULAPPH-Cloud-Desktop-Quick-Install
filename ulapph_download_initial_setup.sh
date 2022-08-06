@@ -70,6 +70,8 @@ git clone https://github.com/edwindvinas/ULAPPH-Cloud-Desktop-Configs.git
 cd ~/go/src/github.com/edwindvinas/
 cd ULAPPH-Cloud-Desktop-Configs
 touch ulapph-firebase-2018-11-24.json
+# Create a dummy automl json file
+touch ulapph-automl.json
 
 echo -e "###############################################"
 echo -e "${Yellow}Downloading ULAPPH-Android-Desktop-Watson...${NC}"
