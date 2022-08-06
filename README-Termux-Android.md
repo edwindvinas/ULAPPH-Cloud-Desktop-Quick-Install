@@ -106,7 +106,6 @@ drwx------  4 u0_a4 u0_a4     3488 Aug  1 01:18 ULAPPH-Cloud-Desktop-Configs
 drwx------  9 u0_a4 u0_a4     8192 Aug  1 01:30 ULAPPH-Cloud-Desktop-Quick-Install
 drwx------  4 u0_a4 u0_a4     3488 Aug  1 01:18 ULAPPH-Cloud-Desktop-WP
 drwx------  3 u0_a4 u0_a4     3488 Aug  1 01:18 ULAPPH-Cloud-Desktop-Watson
-
 ```
 
 # STEP11: Download the Quick Install repo from Github.
@@ -125,7 +124,7 @@ drwx------  4 u0_a4 u0_a4     3488 Aug  1 01:18 ULAPPH-Cloud-Desktop-Configs
 drwx------  9 u0_a4 u0_a4     8192 Aug  1 01:30 ULAPPH-Cloud-Desktop-Quick-Install
 drwx------  4 u0_a4 u0_a4     3488 Aug  1 01:18 ULAPPH-Cloud-Desktop-WP
 drwx------  3 u0_a4 u0_a4     3488 Aug  1 01:18 ULAPPH-Cloud-Desktop-Watson
-
+```
 
 # Copy shortcut scripts scripts
 ```
