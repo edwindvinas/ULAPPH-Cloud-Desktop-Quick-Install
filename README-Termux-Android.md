@@ -8,11 +8,23 @@ Installation Guide for Android
 https://f-droid.org/
 - You need to increase the timeout of your Android screen since some commands being executed may take some time.
 
-# STEP2: Install Termux in Android
+# STEP2a: Install Termux in Android
 - Do not install from Google Playstore
 - Install from F-Droid
 - Open F-Droid app
 - Search & Install "Termux"
+
+# STEP2b: Install Termux-API in Android
+- Do not install from Google Playstore
+- Install from F-Droid
+- Open F-Droid app
+- Search & Install "Termux-API"
+
+# STEP2c: Install Termux-Widget in Android
+- Do not install from Google Playstore
+- Install from F-Droid
+- Open F-Droid app
+- Search & Install "Termux-Widget"
 
 # STEP3: Optional: Install Hacker's Keyboard
 - If you have relatively new Android device, no need to perform this.
@@ -36,6 +48,7 @@ $ whoami
 - Take note of the username. Example: u0_a290
 $ ifconfig
 - Take note of the IP address beside inet. Example: 192.168.1.51
+```
 
 # Connecting to Android via SSH
 - To connect from Windows Gitbash to your Android, we need to setup proper ssh keys.
@@ -64,6 +77,7 @@ Number of key(s) added: 1
 Now try logging into the machine, with:   "ssh -p '8022' 'u0_a257@192.168.1.125'"
 and check to make sure that only the key(s) you wanted were added.
 ```
+
 - You can now test ssh connection. Make sure to use the exact user and IP address
 ```
 $ ssh -p 8022 u0_a290@192.168.1.51
@@ -126,64 +140,22 @@ drwx------  4 u0_a4 u0_a4     3488 Aug  1 01:18 ULAPPH-Cloud-Desktop-WP
 drwx------  3 u0_a4 u0_a4     3488 Aug  1 01:18 ULAPPH-Cloud-Desktop-Watson
 ```
 
-# Copy shortcut scripts scripts
+# STEP12: Install ULAPPH dependencies
 ```
-$ cd ~/go/src/github.com/edwindvinas/ULAPPH-Android-Desktop-Quick-Install/scripts-termux
-$ ls -la
-$ cp * ~/
 $ cd ~
-```
-
-# Install default go/bin executables
-```
-$ dep
-$ cd go-bin
-$ cp * ~/go/bin/
-```
-
-# Update shortcut scripts
-```
-$ pkg install vim
-$ vim run_ulapph.sh
-$ vim setalias_ulapph.sh
-$ vim stop_ulapph.sh
 $ source setalias_ulapph.sh
-$ dep
-$ dev
-$ ctl
-$ ai
-$ cfg
-```
-
-# Setup Termux Storage
-https://wiki.termux.com/wiki/Termux-setup-storage
-First, go to Android settings and grant permission to Termux.
-Then, restart Android so permission will take effect.
-```
-$ termux-setup-storage
-$ cd ~/storage/
-$ mkdir ulapph
-$ cd ~/storage/ulapph/
-$ mkdir ulapph-data
-```
-
-# Setup Termux API
-https://wiki.termux.com/wiki/Termux:API
-First, Download the Termux:API add-on from F-Droid or the Google Play Store. It is required for the API implementations to function.
-```
-$ pkg install termux-api
-```
-
-# Install ULAPPH dependencies
-```
 $ dev
 $ chmod +x gogetall.sh
 $ ./gogetall.sh
 ```
 
+# STEP13: Updating the YAML configuration 
+- You need to update YAML configuration to specify special config settings.
+```
+$ cd ~
+$ source setalias_ulapph.sh
+$ cfg
 $ vim ulapph-demo-android.yaml
-# Example of config items that you need to update
-# If stateless, use a fix IP where this server runs
    - item: SYS_FIXED_IP_ADDRESS
      format: Text
      status: Enable
@@ -193,10 +165,33 @@ $ vim ulapph-demo-android.yaml
      format: Text
      status: Enable
      value: /data/data/com.termux/files/home/storage/
+
+   - item: SYS_ULAPPH_DATA_FOLDER_PATH
+     format: Text
+     status: Enable
+     value: /data/data/com.termux/files/home/storage/ulapph/ulapph-data
+
+   - item: SYSTEM_CUSTOM_SEARCH_TEMPLATE
+     format: Text
+     status: Enable
+     value: custom-search-acn.txt
+
+   - item: SYS_FINGERPRINT_ENABLED
+     format: Flag
+     status: Enable
+     value: true
+
+   - item: SYS_DEVICE_INFO
+     format: Text
+     status: Enable
+     value: OPPO F7 / Android 10 / Termux
+
 ```
 
-# Generate server certificates
+# STEP14: Generate server certificates for your ULAPPH server
 ```
+$ cd ~
+$ source setalias_ulapph.sh
 $ dev
 $ pkg install openssl
 $ pkg install openssl-tool
@@ -206,14 +201,19 @@ $ openssl req -new -key server.key -out server.csr
 $ openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
 ```
 
-# Setup wallpaper folder
+# STEP15: Optional - Setup your wallpaper folder
 ```
+$ cd ~
+$ source setalias_ulapph.sh
 $ dev
 $ mkdir -p static/img/wallpapers
 ```
 
-# Index Android images
+# STEP16: Super Optional - Index Android images
+- You only need this if you want to create a static site for browsing Android contents
 ```
+$ cd ~
+$ source setalias_ulapph.sh
 $ dep
 $ vim termux_index_android_files.sh
 HOME="/data/data/com.termux/files/home/storage/"
@@ -221,14 +221,16 @@ HOME_DATA="/data/data/com.termux/files/home/storage"
 $ ./termux_index_android_files.sh
 ```
 
-# Setup crontab
+# STEP17: Super Optional - Setup crontab
+- You only need this if you want to run crontabs for say running the script in step above. 
 ```
-$ crontab -e
 $ pkg install cronie
-*/15 * * * * cd /data/data/com.termux/files/home/go/src/github.com/edwindvinas/ULAPPH-Cloud-Desktop-Quick-Install/ && ./termux_index_android_files.sh
+$ crontab -e
+asterisk/15 * * * * cd /data/data/com.termux/files/home/go/src/github.com/edwindvinas/ULAPPH-Cloud-Desktop-Quick-Install/ && ./termux_index_android_files.sh
 ```
 
-# Run build/deploy script
+# STEP18: Run build/deploy script
+- Once everything is setup, you can initially build/deploy now!
 ```
 $ deploy-android
 Welcome to ULAPPH Cloud Desktop - Quick Installation Tool
@@ -245,22 +247,36 @@ Please wait... this may take a while...
  2731 / 90731 [====>----------------------------------]   3.01% 01m56
 ```
  
-# Test if ULAPPH is running
-Go to browser in Android or PC
+# STEP19: Test if ULAPPH is running
+- Go to browser in Android or PC
+- Make sure to use your own IP address
 https://192.168.1.125:8443
+- This will open the simple ULAPPH tools page
 
-# Fingerprint Login 
-Go to Android device and do fingerprint check.
+# STEP20: If fingerprint is enabled, you will be prompted with Fingerprint Login 
+- Go to Android device and do fingerprint check.
+- Make sure Termux CLI is running in front as active app
 
-# Upgrading to the latest version
+# STEP21: Adding the Termux Widget 
+- If you have widgets, you can execute commands directly from widget.
+- For example for enabling disabling  ULAPPH system, sshd, file manager or syncthing etc...
+- You can even use the widget for executing automatic upgrade...
+
+# STEP22: Executing shortcut commands via CLI 
+- For example, to upgrade ULAPPH via CLI
+```
 $ cd ~
+$ source setalias_ulapph.sh
+$ short
+$ cd ulapph
 $ ./update_ulapph.sh
+```
 
 #######################################################
 # OPTIONAL STEPS
 ######################################################
 
-# Optional Termux Desktop
+# Launching a Termux Desktop via VNC viewer
 https://github.com/adi1090x/termux-desktop
 ```
 $ cd ~
@@ -284,33 +300,6 @@ https://dashboard.ngrok.com/auth/ssh-keys/new
 Sample: ssh -R 0:localhost:${PORT} tunnel.us.ngrok.com tcp ${PORT}
 ```
 ssh -R 0:localhost:8443 tunnel.us.ngrok.com tcp 80443
-(not working)
+(not working yet)
 ```
-
-Sample Commands
-===============
-
-# Get IP Address of Termux
-```
-$ ifconfig
-```
-
-# Get Username of Termux
-```
-$ whoami
-```
-
-# Install SSH in Android Termux
-```
-apt update && apt upgrade
-```
-
-# SSH to Android Termux
-```
-$ ssh u0_a79@192.168.1.44 -p 8022
-```
-
-# Install and Run ULAPPH
-```
-$ ssh u0_a79@192.168.1.44 -p 8022
-```
+# Thank you!
