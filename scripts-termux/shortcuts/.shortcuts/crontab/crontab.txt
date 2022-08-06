@@ -1,0 +1,6 @@
+*/15 * * * * cd /data/data/com.termux/files/home/go/src/github.com/edwindvinas/ULAPPH-Cloud-Desktop-Quick-Install/ && ./termux_index_android_files.sh
+*/1 19-23,0-6 * * * cd /data/data/com.termux/files/home/go/src/github.com/edwindvinas/ULAPPH-Cloud-Desktop-Quick-Install/ && ./termux_cctv_script_night_ext.sh
+*/1 6-19 * * * cd /data/data/com.termux/files/home/go/src/github.com/edwindvinas/ULAPPH-Cloud-Desktop-Quick-Install/ && ./termux_cctv_script_day_ext.sh
+#*/5 * * * * termux-battery-status > /data/data/com.termux/files/home/go/src/github.com/edwindvinas/ULAPPH-Cloud-Desktop/static/pwa/termux-battery-status.txt
+
+
