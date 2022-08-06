@@ -34,10 +34,10 @@ export GOPTAH=~/go
 echo -e "###############################################"
 echo -e "${Yellow}Copying scripts & go-bin folder..${NC}"
 echo -e "###############################################"
-echo "${Cyan}Copying alias script to ~...${NC}"
+echo -e "${Cyan}Copying alias script to ~...${NC}"
 cp ./scripts-termux/setalias_ulapph.sh /data/data/com.termux/files/home/
 
-echo "${Cyan}Copying shortcut scripts to ~/.shortcuts/...${NC}"
+echo -e "${Cyan}Copying shortcut scripts to ~/.shortcuts/...${NC}"
 mkdir -p /data/data/com.termux/files/home/.shortcuts/
 cp -r ./scripts-termux/shortcuts/* /data/data/com.termux/files/home/.shortcuts/
 chmod 700 -R ~/.shortcuts/
@@ -86,17 +86,6 @@ cd $WORKDIR
 git clone https://github.com/edwindvinas/ULAPPH-Cloud-Desktop-WP.git
 
 echo -e "###############################################"
-echo -e  "${Yellow}Initializing termux storage...${NC}"
-echo -e "###############################################"
-echo -e "${Cyan}Running termux-setup-storage...${NC}"
-termux-setup-storage
-echo -e "${Cyan}Creating initial ulapph-data folder...${NC}"
-cd ~/storage/
-mkdir ulapph
-cd ~/storage/ulapph/
-mkdir ulapph-data
-
-echo -e "###############################################"
 echo -e  "${Yellow}Installing termux API...${NC}"
 echo -e "###############################################"
 echo -e "${Cyan}Aside from Android apk, this CLI is needed for Termux API...${NC}"
@@ -113,4 +102,15 @@ echo -e "###############################################"
 echo -e  "${Yellow}Download/Install Package Syncthing...${NC}"
 echo -e "###############################################"
 pkg install syncthing
+
+echo -e "###############################################"
+echo -e  "${Yellow}Initializing termux storage...${NC}"
+echo -e "###############################################"
+echo -e "${Cyan}Running termux-setup-storage...${NC}"
+termux-setup-storage
+echo -e "${Cyan}Creating initial ulapph-data folder...${NC}"
+cd ~/storage/
+mkdir ulapph
+cd ~/storage/ulapph/
+mkdir ulapph-data
 
