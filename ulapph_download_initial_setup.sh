@@ -42,7 +42,7 @@ mkdir -p /data/data/com.termux/files/home/.shortcuts/
 cp -r ./scripts-termux/shortcuts/* /data/data/com.termux/files/home/.shortcuts/
 chmod 700 -R ~/.shortcuts/
 
-echo "${Cyan}Copying go-bin/* to ~/go/bin/ ...${NC}"
+echo -e "${Cyan}Copying go-bin/* to ~/go/bin/ ...${NC}"
 cp ./go-bin/* /data/data/com.termux/files/home/go/bin/
 
 echo -e "###############################################"
