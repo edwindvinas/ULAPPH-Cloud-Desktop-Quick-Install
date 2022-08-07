@@ -22,13 +22,13 @@ recordAndUploadAudio() {
     termux-media-player play ../tmp.wav > /dev/null & #play recording back before deepspeech
     #rm -f ../tmp.wav
     ls -la ../tmp.wav
-    RESP=`curl -F "file=@../tmp.wav;type=audio/x-wav" -A "Mozilla/5.0" 'https://us-central1-ulapph-demo.cloudfunctions.net/function-1?FUNC_CODE=upload-audio&uid=wyhc8lfah5cl74hj@gmail.com'`
+    RESP=`curl -F "file=@../tmp.wav;type=audio/x-wav" -A "Mozilla/5.0" 'https://us-central1-ulapph-demo.cloudfunctions.net/function-1?FUNC_CODE=upload-audio&uid=wyhc8lfah5cl74hj@gmail.com&API_KEY=YOUR-API-KEY'`
     echo ${RESP}
     recognizeAudio
 }
 recognizeAudio() {
     logger "recognizeAudio()"
-    SPEECH=`curl -A "Mozilla/5.0" 'https://us-central1-ulapph-demo.cloudfunctions.net/function-1?FUNC_CODE=speech-to-text&fileURI='${RESP}'&uid=wyhc8lfah5cl74hj@gmail.com'`
+    SPEECH=`curl -A "Mozilla/5.0" 'https://us-central1-ulapph-demo.cloudfunctions.net/function-1?FUNC_CODE=speech-to-text&fileURI='${RESP}'&uid=wyhc8lfah5cl74hj@gmail.com&API_KEY=cmqb7jynobnbi9mqq9ov9fio2h0fear'`
     echo ${SPEECH}
     if [ "$SPEECH" == "" ];
     then
