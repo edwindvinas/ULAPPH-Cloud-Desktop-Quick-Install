@@ -45,8 +45,8 @@ cd ${ULAPPH_HOME}/ULAPPH-Cloud-Desktop-Quick-Install/
 git remote -v
 git pull origin master
 
-DIFF_UPDATE=`diff ${ULAPPH_HOME}/ULAPPH-Cloud-Desktop-Quick-Install/scripts-termux/update_ulapph.sh ~/update_ulapph.sh`
-if [[ "${CERTS}" == "" ]] ;
+DIFF_UPDATE=`diff ${ULAPPH_HOME}/ULAPPH-Cloud-Desktop-Quick-Install/scripts-termux/shortcuts/ulapph/update_ulapph.sh ~/.shortcuts/ulapph/update_ulapph.sh`
+if [[ "${DIFF_UPDATE}" == "" ]] ;
 then
     echo -e "${Green}Good... Your old update script and the latest update script are the same...${NC}"
 else

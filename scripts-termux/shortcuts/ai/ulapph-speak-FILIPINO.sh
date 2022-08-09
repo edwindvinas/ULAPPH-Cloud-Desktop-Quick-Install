@@ -1,4 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/bash
+API_KEY=YOUR-API-KEY
 SPEECH_TIME=3
 ULAPPH=~/go/src/github.com/edwindvinas/ULAPPH-Cloud-Desktop
 mic_listen() {
@@ -22,17 +23,29 @@ recordAndUploadAudio() {
     termux-media-player play ../tmp.wav > /dev/null & #play recording back before deepspeech
     #rm -f ../tmp.wav
     ls -la ../tmp.wav
-    RESP=`curl -F "file=@../tmp.wav;type=audio/x-wav" -A "Mozilla/5.0" 'https://us-central1-ulapph-demo.cloudfunctions.net/function-1?FUNC_CODE=upload-audio&uid=wyhc8lfah5cl74hj@gmail.com&API_KEY=cmqb7jynobnbi9mqq9ov9fio2h0fearz'`
+    RESP=`curl -F "file=@../tmp.wav;type=audio/x-wav" -A "Mozilla/5.0" 'https://us-central1-ulapph-demo.cloudfunctions.net/function-1?FUNC_CODE=upload-audio&uid=wyhc8lfah5cl74hj@gmail.com&API_KEY='$API_KEY`
     echo ${RESP}
     recognizeAudio
 }
 recognizeAudio() {
     logger "recognizeAudio()"
-    SPEECH=`curl -A "Mozilla/5.0" 'https://us-central1-ulapph-demo.cloudfunctions.net/function-1?FUNC_CODE=speech-to-text&fileURI='${RESP}'&uid=wyhc8lfah5cl74hj@gmail.com&API_KEY=cmqb7jynobnbi9mqq9ov9fio2h0fear'`
+    SPEECH=`curl -A "Mozilla/5.0" 'https://us-central1-ulapph-demo.cloudfunctions.net/function-1?FUNC_CODE=speech-to-text-fil&fileURI='${RESP}'&uid=wyhc8lfah5cl74hj@gmail.com&API_KEY='$API_KEY`
     echo ${SPEECH}
     if [ "$SPEECH" == "" ];
     then
-        sayTextToAudio "Sorry, you have entered blank message, bye for now."
+        sayTextToAudioFil "Paumanhin po, di ka nagbigay ng tamang salita. Paalam na muna."
+        exit 0
+    fi
+}
+translateToFilipino() {
+    logger "translateToFilipino()"
+    logger "$@"
+    rawurlencode "$@"
+    SPEECH=`curl -A "Mozilla/5.0" 'https://us-central1-ulapph-demo.cloudfunctions.net/function-1?FUNC_CODE=trans-to-fil&text='${ENC_MESSAGE}'&uid=wyhc8lfah5cl74hj@gmail.com&API_KEY='$API_KEY`
+    echo ${SPEECH}
+    if [ "$SPEECH" == "" ];
+    then
+        sayTextToAudioFil "Pasensya na po, di ko kau maintindihan. Paalam na muna."
         exit 0
     fi
 }
@@ -49,7 +62,8 @@ function callUlapphAssistant() {
     arrIN=`echo $content | awk -F'UWM_ACTION' '{print $1}'`
     echo ${arrIN}
     fMessage=${arrIN}
-    sayTextToAudio ${fMessage}
+    translateToFilipino ${fMessage}
+    sayTextToAudioFil ${SPEECH}
     #Repeat loop
     dialogBoxConfirm
     if [ "$CONF" == "\"yes\"" ];
@@ -59,17 +73,26 @@ function callUlapphAssistant() {
         recordAndUploadAudio
         callUlapphAssistant $SPEECH
     else
-        sayTextToAudio "Ok, bye for now."
+        sayTextToAudioFil "Okay, paalam na muna sa ngayon." 
         exit 0
     fi
 }
 function dialogBoxConfirm() {
-    CONF=`termux-dialog confirm -i "Press Yes to speak again" -t "ULAPPH AI Confirm" | jq .text`
+    CONF=`termux-dialog confirm -i "Press Yes to speak again" -t "ULAPPH Speak - FILIPINO" | jq .text`
     echo $CONF
 }
 function sayTextToAudio() {
     logger "sayTextToAudio()"
     termux-tts-speak $@ 
+}
+function sayTextToAudioFil() {
+    logger "sayTextToAudioFil()"
+    IN_MSG=$@
+    sayInData=`echo ${IN_MSG} | sed "s/\&quot\;//g"`
+    sayInData2=`echo ${sayInData} | sed "s/h\\n//g"`
+    sayInData3=`echo ${sayInData2} | sed "s/m\\n//g"`
+    echo $sayInData3
+    termux-tts-speak -l "fil-PH" $sayInData3
 }
 rawurlencode() {
   local string="$@"

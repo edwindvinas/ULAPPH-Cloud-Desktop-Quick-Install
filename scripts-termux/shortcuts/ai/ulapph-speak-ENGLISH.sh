@@ -1,4 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/bash
+API_KEY=YOUR-API-KEY
 SPEECH_TIME=3
 ULAPPH=~/go/src/github.com/edwindvinas/ULAPPH-Cloud-Desktop
 mic_listen() {
@@ -22,13 +23,13 @@ recordAndUploadAudio() {
     termux-media-player play ../tmp.wav > /dev/null & #play recording back before deepspeech
     #rm -f ../tmp.wav
     ls -la ../tmp.wav
-    RESP=`curl -F "file=@../tmp.wav;type=audio/x-wav" -A "Mozilla/5.0" 'https://us-central1-ulapph-demo.cloudfunctions.net/function-1?FUNC_CODE=upload-audio&uid=wyhc8lfah5cl74hj@gmail.com&API_KEY=cmqb7jynobnbi9mqq9ov9fio2h0fearz'`
+    RESP=`curl -F "file=@../tmp.wav;type=audio/x-wav" -A "Mozilla/5.0" 'https://us-central1-ulapph-demo.cloudfunctions.net/function-1?FUNC_CODE=upload-audio&uid=wyhc8lfah5cl74hj@gmail.com&API_KEY='$API_KEY`
     echo ${RESP}
     recognizeAudio
 }
 recognizeAudio() {
     logger "recognizeAudio()"
-    SPEECH=`curl -A "Mozilla/5.0" 'https://us-central1-ulapph-demo.cloudfunctions.net/function-1?FUNC_CODE=speech-to-text&fileURI='${RESP}'&uid=wyhc8lfah5cl74hj@gmail.com&API_KEY=cmqb7jynobnbi9mqq9ov9fio2h0fear'`
+    SPEECH=`curl -A "Mozilla/5.0" 'https://us-central1-ulapph-demo.cloudfunctions.net/function-1?FUNC_CODE=speech-to-text&fileURI='${RESP}'&uid=wyhc8lfah5cl74hj@gmail.com&API_KEY='$API_KEY`
     echo ${SPEECH}
     if [ "$SPEECH" == "" ];
     then
@@ -64,7 +65,7 @@ function callUlapphAssistant() {
     fi
 }
 function dialogBoxConfirm() {
-    CONF=`termux-dialog confirm -i "Press Yes to speak again" -t "ULAPPH AI Confirm" | jq .text`
+    CONF=`termux-dialog confirm -i "Press Yes to speak again" -t "ULAPPH AI English - Voice" | jq .text`
     echo $CONF
 }
 function sayTextToAudio() {

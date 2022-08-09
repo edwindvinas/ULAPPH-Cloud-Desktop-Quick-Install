@@ -16,6 +16,7 @@ alias edit-main='dev && vim main.go'
 alias data='cd ~/storage/ulapph/ulapph-data'
 alias stop='~/stop_ulapph.sh'
 alias short='cd ~/.shortcuts'
+alias aic='/data/data/com.termux/files/home/go/src/github.com/edwindvinas/ULAPPH-Cloud-Desktop-AI/ai/syncToLiveFolder.sh'
 
 export GOPATH=$PATH:~/go
 export PATH=$PATH:~/go/bin
