@@ -17,7 +17,7 @@ Cyan='\033[0;36m'         # Cyan
 White='\033[0;37m'        # White
 #---------------------------------------------------------------------------
 echo -e "###############################################"
-echo -e "${Cyan}Updating ULAPPH-Cloud-Desktop in this device...${NC}"
+echo -e "${Cyan}Welcome to ULAPPH-Cloud-Desktop Upgrade Tool...${NC}"
 echo -e "###############################################"
 #source ./setalias_ulapph.sh
 TERMUX_HOME=/data/data/com.termux/files/home
@@ -26,24 +26,38 @@ ULAPPH_HOME=/data/data/com.termux/files/home/go/src/github.com/edwindvinas
 echo -e "************************************************"
 echo -e "${Cyan}Downloading latest ULAPPH Cloud Desktop codes...${NC}"
 echo -e "************************************************"
-cd ${ULAPPH_HOME}/ULAPPH-Cloud-Desktop/
-rm static/pwa/termux-battery-status.txt
-git remote -v
-git pull google master
+REP_NAME=ULAPPH-Android-Desktop
+GIT_URL=https://github.com/edwindvinas/$REP_NAME.git
+echo "Removing existing folder..."
+cd ${ULAPPH_HOME}
+rm -rf $REP_NAME 
+echo "cloning repo... "
+echo $GIT_URl
+git clone $GIT_URL
 
 echo -e "************************************************"
 echo -e "${Cyan}Downloading latest ULAPPH Cloud Desktop - Watson codes...${NC}"
 echo -e "************************************************"
-cd ${ULAPPH_HOME}/ULAPPH-Cloud-Desktop-Watson/
-git remote -v
-git pull origin master
+REP_NAME=ULAPPH-Cloud-Desktop-Watson
+GIT_URL=https://github.com/edwindvinas/$REP_NAME.git
+echo "Removing existing folder..."
+cd ${ULAPPH_HOME}
+rm -rf $REP_NAME 
+echo "cloning repo... "
+echo $GIT_URl
+git clone $GIT_URL
 
 echo -e "************************************************"
 echo -e "${Cyan}Downloading latest ULAPPH Cloud Desktop - Quick Install codes...${NC}"
 echo -e "************************************************"
-cd ${ULAPPH_HOME}/ULAPPH-Cloud-Desktop-Quick-Install/
-git remote -v
-git pull origin master
+REP_NAME=ULAPPH-Cloud-Desktop-Quick-Install
+GIT_URL=https://github.com/edwindvinas/$REP_NAME.git
+echo "Removing existing folder..."
+cd ${ULAPPH_HOME}
+rm -rf $REP_NAME 
+echo "cloning repo... "
+echo $GIT_URl
+git clone $GIT_URL
 
 DIFF_UPDATE=`diff ${ULAPPH_HOME}/ULAPPH-Cloud-Desktop-Quick-Install/scripts-termux/shortcuts/ulapph/update_ulapph.sh ~/.shortcuts/ulapph/update_ulapph.sh`
 if [[ "${DIFF_UPDATE}" == "" ]] ;

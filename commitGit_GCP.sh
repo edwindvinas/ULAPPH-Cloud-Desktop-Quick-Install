@@ -10,9 +10,13 @@ cp ~/setalias_ulapph.sh ./scripts-termux/
 #cp ~/.termux/boot/* ./scripts-termux-boot/
 
 #cp ~/.shortcuts/tasks/*.sh ./scripts-termux-widget/
-cp -r ~/.shortcuts/* ./scripts-termux/shortcuts
-
+cp -r ~/.shortcuts/* ./scripts-termux/shortcuts/
+sleep 2
 git add --all
+sleep 2
+echo $1
 git commit -m $1
-git push origin master
+sleep 2
+#git push origin master
+git push
 
