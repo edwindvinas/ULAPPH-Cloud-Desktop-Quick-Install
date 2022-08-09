@@ -22,6 +22,7 @@ function callUlapphAssistant() {
         callUlapphAssistant
     else
         sayTextToAudioFil "Okay, paalam na muna sa ngayon." 
+        sleep 5
         exit 0
     fi
 }

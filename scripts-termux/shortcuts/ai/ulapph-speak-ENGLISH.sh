@@ -37,6 +37,16 @@ recognizeAudio() {
         exit 0
     fi
 }
+function openURL() {
+    echo "Open in browser..."
+    if which xdg-open > /dev/null
+    then
+      xdg-open $@
+    elif which gnome-open > /dev/null
+    then
+      gnome-open $@
+    fi
+}
 function callUlapphAssistant() {
     logger "callUlapphAssistant"
     logger "$@"
@@ -51,6 +61,17 @@ function callUlapphAssistant() {
     echo ${arrIN}
     fMessage=${arrIN}
     sayTextToAudio ${fMessage}
+    #Open any window is indicated
+    arrIN2=`echo $content | awk -F'UWM_ACTION::OPENWINDOW::' '{print $2}'`
+    echo $arrIN2
+    FURL=`echo ${arrIN2} | tr -d '"'`
+    if [ "$FURL" != "" ];
+    then
+        echo "Opening url..."
+        sayTextToAudio "Opening URL and exiting..."
+        openURL $FURL
+        exit 0
+    fi
     #Repeat loop
     dialogBoxConfirm
     if [ "$CONF" == "\"yes\"" ];
@@ -61,9 +82,11 @@ function callUlapphAssistant() {
         callUlapphAssistant $SPEECH
     else
         sayTextToAudio "Ok, bye for now."
+        sleep 5
         exit 0
     fi
 }
+
 function dialogBoxConfirm() {
     CONF=`termux-dialog confirm -i "Press Yes to speak again" -t "ULAPPH AI English - Voice" | jq .text`
     echo $CONF

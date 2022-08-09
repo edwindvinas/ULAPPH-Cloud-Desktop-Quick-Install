@@ -21,6 +21,40 @@ what is the <term>
 wiki for <term>
 wikipedia for <term>
 wikipedia <term>
+bible
+play
+play lords prayer
+lords prayer
+play funny
+play mario
+play tetris
+play word game
+play text twist
+play game
+watch youtube
+launch youtube
+music
+play sound
+play sounds
+play song
+play music
+play video
+youtube
+listen radio
+play radio
+play music
+play video
+quick search
+search
+search 
+quotation
+news live stream
+open article-
+open slide-
+open media-
+open ARTICLE-
+open SLIDE-
+open MEDIA-
 END
 )
 
