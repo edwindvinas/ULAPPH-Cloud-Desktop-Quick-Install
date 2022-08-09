@@ -36,6 +36,18 @@ echo $GIT_URl
 git clone $GIT_URL
 
 echo -e "************************************************"
+echo -e "${Cyan}Downloading latest ULAPPH Cloud Desktop - AI codes...${NC}"
+echo -e "************************************************"
+REP_NAME=ULAPPH-Cloud-Desktop-AI
+GIT_URL=https://github.com/edwindvinas/$REP_NAME.git
+echo "Removing existing folder..."
+cd ${ULAPPH_HOME}
+rm -rf $REP_NAME 
+echo "cloning repo... "
+echo $GIT_URl
+git clone $GIT_URL
+
+echo -e "************************************************"
 echo -e "${Cyan}Downloading latest ULAPPH Cloud Desktop - Watson codes...${NC}"
 echo -e "************************************************"
 REP_NAME=ULAPPH-Cloud-Desktop-Watson
