@@ -63,6 +63,9 @@ echo "Since it is ULAPPH-Android-Desktop repo, we need to rename it to  ULAPPH C
 cd ${ULAPPH_HOME}
 rm -rf ULAPPH-Cloud-Desktop 
 mv ULAPPH-Android-Desktop ULAPPH-Cloud-Desktop
+echo -e "${Yellow}Generating SSL certs... Just press Enter when prompted...${NC}"
+cd ULAPPH-Cloud-Desktop && ./gen_ssl_certs.sh
+echo -e "${Yellow}Done - Generated SSL certs...${NC}"
 
 echo -e "************************************************"
 echo -e "${Cyan}Downloading latest ULAPPH Cloud Desktop - AI codes...${NC}"
@@ -133,7 +136,9 @@ then
     echo -e "${Red}Aborted due to SSL certs issue. Please fix the issue first.${NC}"
     echo -e "${Red}Usually, you need to generate the SSL certs.${NC}"
     echo -e "${Red}You can use below command to generate:${NC}"
-    echo -e "${Red}cd ULAPPH-Cloud-Desktop && ./gen_ssl_certs.sh ${NC}"
+    #echo -e "${Red}cd ULAPPH-Cloud-Desktop && ./gen_ssl_certs.sh ${NC}"
+    echo -e "${Red}$ dev ${NC}"
+    echo -e "${Red}$ ./gen_ssl_certs.sh ${NC}"
     exit 0
 
 fi
