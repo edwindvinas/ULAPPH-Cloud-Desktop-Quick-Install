@@ -42,6 +42,7 @@ then
 else
     echo -e "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
     echo -e "${Yellow}Looks like update script is outdated... Your old update script and the latest update script are NOT the same...${NC}"
+    cp ${ULAPPH_HOME}/ULAPPH-Cloud-Desktop-Quick-Install/scripts-termux/shortcuts/ulapph/update_ulapph.sh ~/.shortcuts/ulapph/update_ulapph.sh
     echo -e "${Yellow}I have copied the latest. Kindly re-run this update script...${NC}"
     echo -e "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
     exit 0

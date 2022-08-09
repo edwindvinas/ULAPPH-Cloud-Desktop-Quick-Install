@@ -14,8 +14,8 @@ cp -r ~/.shortcuts/* ./scripts-termux/shortcuts/
 sleep 2
 git add --all
 sleep 2
-echo $1
-git commit -m $1
+#echo $1
+git commit -m "$1" 
 sleep 2
 #git push origin master
 git push
