@@ -59,6 +59,10 @@ rm -rf $REP_NAME
 echo "cloning repo... "
 echo $GIT_URl
 git clone $GIT_URL
+echo "Since it is ULAPPH-Android-Desktop repo, we need to rename it to  ULAPPH Cloud Desktop..."
+cd ${ULAPPH_HOME}
+rm -rf ULAPPH-Cloud-Desktop 
+mv ULAPPH-Android-Desktop ULAPPH-Cloud-Desktop
 
 echo -e "************************************************"
 echo -e "${Cyan}Downloading latest ULAPPH Cloud Desktop - AI codes...${NC}"
