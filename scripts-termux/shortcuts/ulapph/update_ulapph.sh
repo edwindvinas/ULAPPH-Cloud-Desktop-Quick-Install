@@ -24,6 +24,30 @@ TERMUX_HOME=/data/data/com.termux/files/home
 ULAPPH_HOME=/data/data/com.termux/files/home/go/src/github.com/edwindvinas
 
 echo -e "************************************************"
+echo -e "${Cyan}Downloading latest ULAPPH Cloud Desktop - Quick Install codes...${NC}"
+echo -e "************************************************"
+REP_NAME=ULAPPH-Cloud-Desktop-Quick-Install
+GIT_URL=https://github.com/edwindvinas/$REP_NAME.git
+echo "Removing existing folder..."
+cd ${ULAPPH_HOME}
+rm -rf $REP_NAME 
+echo "cloning repo... "
+echo $GIT_URl
+git clone $GIT_URL
+
+DIFF_UPDATE=`diff ${ULAPPH_HOME}/ULAPPH-Cloud-Desktop-Quick-Install/scripts-termux/shortcuts/ulapph/update_ulapph.sh ~/.shortcuts/ulapph/update_ulapph.sh`
+if [[ "${DIFF_UPDATE}" == "" ]] ;
+then
+    echo -e "${Green}Good... Your old update script and the latest update script are the same...${NC}"
+else
+    echo -e "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    echo -e "${Yellow}Looks like update script is outdated... Your old update script and the latest update script are NOT the same...${NC}"
+    echo -e "${Yellow}I have copied the latest. Kindly re-run this update script...${NC}"
+    echo -e "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    exit 0
+fi
+
+echo -e "************************************************"
 echo -e "${Cyan}Downloading latest ULAPPH Cloud Desktop codes...${NC}"
 echo -e "************************************************"
 REP_NAME=ULAPPH-Android-Desktop
@@ -59,29 +83,6 @@ echo "cloning repo... "
 echo $GIT_URl
 git clone $GIT_URL
 
-echo -e "************************************************"
-echo -e "${Cyan}Downloading latest ULAPPH Cloud Desktop - Quick Install codes...${NC}"
-echo -e "************************************************"
-REP_NAME=ULAPPH-Cloud-Desktop-Quick-Install
-GIT_URL=https://github.com/edwindvinas/$REP_NAME.git
-echo "Removing existing folder..."
-cd ${ULAPPH_HOME}
-rm -rf $REP_NAME 
-echo "cloning repo... "
-echo $GIT_URl
-git clone $GIT_URL
-
-DIFF_UPDATE=`diff ${ULAPPH_HOME}/ULAPPH-Cloud-Desktop-Quick-Install/scripts-termux/shortcuts/ulapph/update_ulapph.sh ~/.shortcuts/ulapph/update_ulapph.sh`
-if [[ "${DIFF_UPDATE}" == "" ]] ;
-then
-    echo -e "${Green}Good... Your old update script and the latest update script are the same...${NC}"
-else
-    echo -e "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-    echo -e "${Yellow}Looks like update script is outdated... Your old update script and the latest update script are NOT the same...${NC}"
-    echo -e "${Yellow}I have copied the latest. Kindly re-run this update script...${NC}"
-    echo -e "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-    exit 0
-fi
 
 echo -e "************************************************"
 echo -e "${Cyan}Comparing your configs with the latest ULAPPH Cloud Desktop - Configs...${NC}"
