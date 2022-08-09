@@ -39,12 +39,19 @@ recognizeAudio() {
 }
 function openURL() {
     echo "Open in browser..."
+    NEW_URL=""
+    URL_IN=`echo $@ | awk -F'https' '{print $2}'`
+    if [ "$URL_IN" == "" ]; 
+    then
+        NEW_URL="https://localhost:8443"$@
+        echo $NEW_URL
+    fi
     if which xdg-open > /dev/null
     then
-      xdg-open $@
+        xdg-open $NEW_URL
     elif which gnome-open > /dev/null
     then
-      gnome-open $@
+        gnome-open $NEW_URL
     fi
 }
 function callUlapphAssistant() {
@@ -65,11 +72,24 @@ function callUlapphAssistant() {
     arrIN2=`echo $content | awk -F'UWM_ACTION::OPENWINDOW::' '{print $2}'`
     echo $arrIN2
     FURL=`echo ${arrIN2} | tr -d '"'`
+    echo $FURL
     if [ "$FURL" != "" ];
     then
         echo "Opening url..."
         sayTextToAudio "Opening URL and exiting..."
         openURL $FURL
+        exit 0
+    fi
+    #Open any tab is indicated
+    arrIN3=`echo $content | awk -F'UWM_ACTION::OPENTAB::' '{print $2}'`
+    echo $arrIN3
+    FURL2=`echo ${arrIN3} | tr -d '"'`
+    echo $FURL2
+    if [ "$FURL2" != "" ];
+    then
+        echo "Opening url..."
+        sayTextToAudio "Opening URL and exiting..."
+        openURL $FURL2
         exit 0
     fi
     #Repeat loop
