@@ -1,7 +1,19 @@
 #!/data/data/com.termux/files/usr/bin/bash
-API_KEY=YOUR-API-KEY
+API_KEY=$SPEECH_API_KEY
 SPEECH_TIME=3
 ULAPPH=~/go/src/github.com/edwindvinas/ULAPPH-Cloud-Desktop
+
+#Check api key
+echo $API_KEY
+if [ "$API_KEY" == "" ];
+then
+    echo "================================="
+    echo "ERROR: API Key not found!"
+    echo "================================="
+    echo "Please set it using the command export-api-keys.sh."
+    exit 0
+fi
+
 mic_listen() {
     logger "mic_listen()"
     rm -f ../tmp.mp4

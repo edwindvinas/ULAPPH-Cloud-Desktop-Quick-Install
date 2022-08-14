@@ -1,22 +1,18 @@
 #!/data/data/com.termux/files/usr/bin/bash
-API_KEY=YOUR-API-KEY
+API_KEY=$SPEECH_API_KEY
 SPEECH_TIME=3
 ULAPPH=~/go/src/github.com/edwindvinas/ULAPPH-Cloud-Desktop
 NORESPCTR=0
 #Check api key
 echo $API_KEY
-if [ "$API_KEY" == "YOUR-API-KEY" ]; 
+if [ "$API_KEY" == "" ]; 
 then
+    echo "================================="
     echo "ERROR: API Key not found!"
-    echo "Please enter it in the dialog box."
-    dialogBoxApiKeyInput
-    echo "Updating API keys in different files..."
-    cd /data/data/com.termux/files/home/.shortcuts/ai/
-    sed -i 's/API_KEY=YOUR-API-KEY/API_KEY='${API_KEY_INPUT}'/g' *
+    echo "================================="
+    echo "Please set it using the command export-api-keys.sh."
+    exit 0
 fi
-function dialogBoxApiKeyInput() {
-    API_KEY_INPUT=`termux-dialog text -i "Enter API Key" -t "ULAPPH AI - API Key" | jq .text`
-}
 
 mic_listen() {
     logger "mic_listen()"
