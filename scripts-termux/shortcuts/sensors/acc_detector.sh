@@ -15,8 +15,9 @@ function logger() {
 
 #Get acceloremeter sensor name
 logger "Getting acceloremeter sensor name from env variable..."
-ACCEL=$SENSOR_ACC_NAME
-if [ "$ACCEL" == "" ];
+SENSOR_NAME=$SENSOR_ACC_NAME
+echo $SENSOR_NAME
+if [ "$SENSOR_NAME" == "" ];
 then
     logger "ERROR: SENSOR_NAME is not defined!"
     echo "ERROR: SENSOR_NAME is not defined!"
