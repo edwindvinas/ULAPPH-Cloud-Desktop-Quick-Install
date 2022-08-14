@@ -120,3 +120,11 @@ mkdir ulapph
 cd ~/storage/ulapph/
 mkdir ulapph-data
 
+echo -e "###############################################"
+echo -e  "${Yellow}Download/Install Other Packages...${NC}"
+echo -e "###############################################"
+pkg install git
+pkg install ffmpeg
+pkg install jq
+pkg install bc
+
