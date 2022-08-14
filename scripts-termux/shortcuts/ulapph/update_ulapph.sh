@@ -22,7 +22,7 @@ echo -e "###############################################"
 #source ./setalias_ulapph.sh
 TERMUX_HOME=/data/data/com.termux/files/home
 ULAPPH_HOME=/data/data/com.termux/files/home/go/src/github.com/edwindvinas
-
+SLEEP_TIME=5
 #---------------------------------------------------------------------------
 echo -e "${Purple}###############################################${NC}"
 echo -e "${Cyan}Checking Fingerprint Authentication...${NC}"
@@ -39,6 +39,7 @@ FP_AUTH=`termux-fingerprint | jq .auth_result`
         exit 0
     fi
 
+sleep $SLEEP_TIME
 echo -e "************************************************"
 echo -e "${Cyan}Downloading latest ULAPPH Cloud Desktop - Quick Install codes...${NC}"
 echo -e "************************************************"
@@ -62,8 +63,21 @@ else
     echo -e "${Yellow}I have copied the latest. Kindly re-run this update script...${NC}"
     echo -e "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
     exit 0
+
 fi
 
+sleep $SLEEP_TIME
+echo -e "************************************************"
+echo -e "${Cyan}Backing up SSL certs inside ULAPPH Cloud Desktop folder...${NC}"
+echo -e "************************************************"
+cd ${ULAPPH_HOME}
+mkdir -p ${ULAPPH_HOME}/.certs-ULAPPH-Cloud-Desktop
+cp ${ULAPPH_HOME}/ULAPPH-Cloud-Desktop/*.crt ${ULAPPH_HOME}/.certs-ULAPPH-Cloud-Desktop/
+cp ${ULAPPH_HOME}/ULAPPH-Cloud-Desktop/*.csr ${ULAPPH_HOME}/.certs-ULAPPH-Cloud-Desktop/
+cp ${ULAPPH_HOME}/ULAPPH-Cloud-Desktop/*.key ${ULAPPH_HOME}/.certs-ULAPPH-Cloud-Desktop/
+ls -la ${ULAPPH_HOME}/.certs-ULAPPH-Cloud-Desktop/
+
+sleep $SLEEP_TIME
 echo -e "************************************************"
 echo -e "${Cyan}Downloading latest ULAPPH Cloud Desktop codes...${NC}"
 echo -e "************************************************"
@@ -79,10 +93,16 @@ echo "Since it is ULAPPH-Android-Desktop repo, we need to rename it to  ULAPPH C
 cd ${ULAPPH_HOME}
 rm -rf ULAPPH-Cloud-Desktop 
 mv ULAPPH-Android-Desktop ULAPPH-Cloud-Desktop
-echo -e "${Yellow}Generating SSL certs... Just press Enter when prompted...${NC}"
-cd ULAPPH-Cloud-Desktop && ./gen_ssl_certs.sh
-echo -e "${Yellow}Done - Generated SSL certs...${NC}"
+CERT_FILE=${ULAPPH_HOME}/.certs-ULAPPH-Cloud-Desktop/server.crt
+if test -f "$CERT_FILE"; then
+    echo -e "${Green}Good, certs already exists. No need to regenerate...${NC}"
+else
+    echo -e "${Yellow}Generating SSL certs... Just press Enter when prompted...${NC}"
+    cd ULAPPH-Cloud-Desktop && ./gen_ssl_certs.sh
+    echo -e "${Yellow}Done - Generated SSL certs...${NC}"
+fi
 
+sleep $SLEEP_TIME
 echo -e "************************************************"
 echo -e "${Cyan}Downloading latest ULAPPH Cloud Desktop - AI codes...${NC}"
 echo -e "************************************************"
@@ -95,6 +115,7 @@ echo "cloning repo... "
 echo $GIT_URl
 git clone $GIT_URL
 
+sleep $SLEEP_TIME
 echo -e "************************************************"
 echo -e "${Cyan}Downloading latest ULAPPH Cloud Desktop - Watson codes...${NC}"
 echo -e "************************************************"
@@ -107,7 +128,7 @@ echo "cloning repo... "
 echo $GIT_URl
 git clone $GIT_URL
 
-
+sleep $SLEEP_TIME
 echo -e "************************************************"
 echo -e "${Cyan}Comparing your configs with the latest ULAPPH Cloud Desktop - Configs...${NC}"
 echo -e "************************************************"
@@ -141,6 +162,8 @@ else
     echo -e "${Red}Usually, you need to copy the missing items from latest to your old config.${NC}"
     exit 0
 fi
+
+sleep $SLEEP_TIME
 echo -e "************************************************"
 echo -e "${Cyan}Checking SSL Certificates...${NC}"
 echo -e "************************************************"
@@ -159,17 +182,20 @@ then
 
 fi
 
+sleep $SLEEP_TIME
 echo -e "************************************************"
 echo -e "${Cyan}Copying updated boot, widget and custom scripts...${NC}"
 echo -e "************************************************"
 cd ${TERMUX_HOME}/go/src/github.com/edwindvinas/ULAPPH-Cloud-Desktop-Quick-Install && ./termux_scripts_sync_local.sh
 
+sleep $SLEEP_TIME
 echo -e "************************************************"
 echo -e "${Cyan}Running build & deploy script...${NC}"
 echo -e "************************************************"
 echo -e "NOTE: Please check the output of the build script."
 cd ${TERMUX_HOME}/go/src/github.com/edwindvinas/ULAPPH-Cloud-Desktop-Quick-Install && ./*ANDROID*
 
+sleep $SLEEP_TIME
 echo -e "************************************************"
 echo -e "${Cyan}Making sure ULAPPH is running...${NC}"
 echo -e "************************************************"
