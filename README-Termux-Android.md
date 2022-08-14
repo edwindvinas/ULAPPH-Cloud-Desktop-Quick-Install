@@ -109,9 +109,10 @@ https://chiark.greenend.org.uk/~sgtatham/putty/latest.html
 - This is good so that it will be easier to type the commands.
 - If no bluetooh keyboard, you can still perform the steps in your Android touch screen.
 
-# STEP8: Install git in Termux
+# STEP8: Install git & bc in Termux
 ```
 $ pkg install git
+$ pkg install bc
 ```
 
 # STEP9: Install Golang in Termux
