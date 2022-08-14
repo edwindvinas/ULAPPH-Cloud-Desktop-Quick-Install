@@ -1,6 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 PREV_STATE="DEACTIVATED"
 FL_LOGGER_ON=N
+SENSOR_NAME=""
 
 function logger() {
     if [ "$FL_LOGGER_ON" == "Y" ];
@@ -9,12 +10,22 @@ function logger() {
     fi
 }
 
+#Get acceloremeter sensor name
+logger "Getting acceloremeter sensor name..."
+ACCEL=`termux-sensor -l | grep ACCE`
+if [ "$ACCEL" != "" ];
+then
+    SENSOR_NAME=`echo ${ACCEL} | tr -d '"'`
+    SENSOR_NAME=`echo ${SENSOR_NAME} | tr -d ','`
+    logger "SENSOR_NAME: "$SENSOR_NAME
+fi
+
 while :
 do
     logger "termux-sensor -c"
     termux-sensor -c
-    logger "termux-sensor -d 100 -n 10 -s \"ACCELEROMETER\""
-    SENSORDATA=`termux-sensor -d 100 -n 10 -s "ACCELEROMETER" | jq '.ACCELEROMETER.values[0]'`
+    logger "termux-sensor -d 100 -n 10 -s \"$SENSOR_NAME\""
+    SENSORDATA=`termux-sensor -d 100 -n 10 -s "$SENSOR_NAME" | jq '.$SENSOR_NAME.values[0]'`
     if [ "$SENSORDATA" != "" ];
     then
         echo $SENSORDATA
