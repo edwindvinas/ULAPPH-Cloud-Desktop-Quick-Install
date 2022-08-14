@@ -79,7 +79,9 @@ mkdir -p ${ULAPPH_HOME}/.certs-ULAPPH-Cloud-Desktop
 cp ${ULAPPH_HOME}/ULAPPH-Cloud-Desktop/*.crt ${ULAPPH_HOME}/.certs-ULAPPH-Cloud-Desktop/
 cp ${ULAPPH_HOME}/ULAPPH-Cloud-Desktop/*.csr ${ULAPPH_HOME}/.certs-ULAPPH-Cloud-Desktop/
 cp ${ULAPPH_HOME}/ULAPPH-Cloud-Desktop/*.key ${ULAPPH_HOME}/.certs-ULAPPH-Cloud-Desktop/
-ls -la ${ULAPPH_HOME}/.certs-ULAPPH-Cloud-Desktop/
+ls -la ${ULAPPH_HOME}/.certs-ULAPPH-Cloud-Desktop/*.crt
+ls -la ${ULAPPH_HOME}/.certs-ULAPPH-Cloud-Desktop/*.csr
+ls -la ${ULAPPH_HOME}/.certs-ULAPPH-Cloud-Desktop/*.key
 
 sleep $SLEEP_TIME
 echo -e "************************************************"
@@ -100,6 +102,17 @@ mv ULAPPH-Android-Desktop ULAPPH-Cloud-Desktop
 CERT_FILE=${ULAPPH_HOME}/.certs-ULAPPH-Cloud-Desktop/server.crt
 if test -f "$CERT_FILE"; then
     echo -e "${Green}Good, certs already exists. No need to regenerate...${NC}"
+    sleep $SLEEP_TIME
+    echo -e "************************************************"
+    echo -e "${Cyan}Restoring SSL certs back to ULAPPH Cloud Desktop folder...${NC}"
+    echo -e "************************************************"
+    cd ${ULAPPH_HOME}
+    cp ${ULAPPH_HOME}/.certs-ULAPPH-Cloud-Desktop/*.crt ${ULAPPH_HOME}/ULAPPH-Cloud-Desktop/
+    cp ${ULAPPH_HOME}/.certs-ULAPPH-Cloud-Desktop/*.csr ${ULAPPH_HOME}/ULAPPH-Cloud-Desktop/
+    cp ${ULAPPH_HOME}/.certs-ULAPPH-Cloud-Desktop/*.key ${ULAPPH_HOME}/ULAPPH-Cloud-Desktop/
+    ls -la ${ULAPPH_HOME}/ULAPPH-Cloud-Desktop/*.crt
+    ls -la ${ULAPPH_HOME}/ULAPPH-Cloud-Desktop/*.csr
+    ls -la ${ULAPPH_HOME}/ULAPPH-Cloud-Desktop/*.key
 else
     echo -e "${Yellow}Generating SSL certs... Just press Enter when prompted...${NC}"
     cd ULAPPH-Cloud-Desktop && ./gen_ssl_certs.sh
