@@ -36,6 +36,8 @@ FP_AUTH=`termux-fingerprint | jq .auth_result`
         echo -e "${Green}Good, Fingerprint Authentication...ok${NC}"
     else
         echo -e "${Red}Aborted, Fingerprint Authentication...failed!${NC}"
+        sleep $SLEEP_TIME
+        sleep $SLEEP_TIME
         exit 0
     fi
 
@@ -62,6 +64,8 @@ else
     cp ${ULAPPH_HOME}/ULAPPH-Cloud-Desktop-Quick-Install/scripts-termux/shortcuts/ulapph/update_ulapph.sh ~/.shortcuts/ulapph/update_ulapph.sh
     echo -e "${Yellow}I have copied the latest. Kindly re-run this update script...${NC}"
     echo -e "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    sleep $SLEEP_TIME
+    sleep $SLEEP_TIME
     exit 0
 
 fi
@@ -160,6 +164,8 @@ else
     echo -e "###############################################"
     echo -e "${Red}Aborted due to config issue. Please fix the issue first.${NC}"
     echo -e "${Red}Usually, you need to copy the missing items from latest to your old config.${NC}"
+    sleep $SLEEP_TIME
+    sleep $SLEEP_TIME
     exit 0
 fi
 
@@ -178,6 +184,8 @@ then
     #echo -e "${Red}cd ULAPPH-Cloud-Desktop && ./gen_ssl_certs.sh ${NC}"
     echo -e "${Red}$ dev ${NC}"
     echo -e "${Red}$ ./gen_ssl_certs.sh ${NC}"
+    sleep $SLEEP_TIME
+    sleep $SLEEP_TIME
     exit 0
 
 fi
