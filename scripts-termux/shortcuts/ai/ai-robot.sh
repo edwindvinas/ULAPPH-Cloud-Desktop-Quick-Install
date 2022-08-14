@@ -39,9 +39,6 @@ fi
 logger "Please activate the bot by raising your phone."
 sayTextToAudio "Please activate the bot by raising your phone."
 
-logger "Setting API key..."
-cd /data/data/com.termux/files/home/ && ./export-api-keys.sh
-
 logger "Running acc_detector.sh..."
 /data/data/com.termux/files/home/.shortcuts/sensors/acc_detector.sh
 
