@@ -42,7 +42,7 @@ do
         echo "TOTAL: ${TOTAL}"
         logger "TOTAL: $TOTAL"
         logger "PREV_STATE: $PREV_STATE"
-        if (( $(echo "$TOTAL > 3" | bc -l) )); then
+        if (( $(echo "$TOTAL > 1" | bc -l) )); then
             #Status file can tell if AI was silenced previously
             logger "Status file can tell if AI was silenced previously"
             STATUS_FILE="/data/data/com.termux/files/home/.shortcuts/ai/STATUS.txt"
@@ -58,6 +58,7 @@ do
                     SOUND="/data/data/com.termux/files/home/go/src/github.com/edwindvinas/ULAPPH-Cloud-Desktop/static/audio/R2D2e.mp3"
                     termux-media-player play $SOUND
                     PREV_STATE="ACTIVATED"
+                    termux-vibrate -f -d 500
                     /data/data/com.termux/files/home/.shortcuts/ai/ulapph-speak-ENGLISH.sh
                     rm STATUS_FILE
                     touch STATUS_FILE
@@ -71,6 +72,7 @@ do
                 #SOUND="/data/data/com.termux/files/home/go/src/github.com/edwindvinas/ULAPPH-Cloud-Desktop/static/audio/baby2.mp3"
                 termux-media-player play $SOUND
                 PREV_STATE="ACTIVATED"
+                termux-vibrate -f -d 500
                 /data/data/com.termux/files/home/.shortcuts/ai/ulapph-speak-ENGLISH.sh
             fi
         fi

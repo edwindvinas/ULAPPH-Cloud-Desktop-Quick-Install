@@ -1,6 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 echo "Setting API key..."
-cd /data/data/com.termux/files/home/ && ./export-api-keys.sh
+cd /data/data/com.termux/files/home/ && source ./export-api-keys.sh
 
 API_KEY=$SPEECH_API_KEY
 SPEECH_TIME=3
