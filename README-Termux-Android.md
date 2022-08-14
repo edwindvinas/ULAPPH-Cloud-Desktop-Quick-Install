@@ -109,10 +109,11 @@ https://chiark.greenend.org.uk/~sgtatham/putty/latest.html
 - This is good so that it will be easier to type the commands.
 - If no bluetooh keyboard, you can still perform the steps in your Android touch screen.
 
-# STEP8: Install git & bc in Termux
+# STEP8: Install git, bc and jq in Termux
 ```
 $ pkg install git
 $ pkg install bc
+$ pkg install jq
 ```
 
 # STEP9: Install Golang in Termux
@@ -214,12 +215,7 @@ $ vim ulapph-demo-android.yaml
 $ cd ~
 $ source setalias_ulapph.sh
 $ dev
-$ pkg install openssl
-$ pkg install openssl-tool
-$ openssl genrsa -des3 -passout pass:x -out server.pass.key 2048
-$ openssl rsa -passin pass:x -in server.pass.key -out server.key
-$ openssl req -new -key server.key -out server.csr
-$ openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+$ ./gen_ssl_certs.sh
 ```
 
 # STEP15: Optional - Setup your wallpaper folder
