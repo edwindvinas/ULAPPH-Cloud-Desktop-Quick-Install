@@ -1,4 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
+echo "Setting env vars..."
+cd /data/data/com.termux/files/home && source ./export-api-keys.sh
+
 PREV_STATE="DEACTIVATED"
 FL_LOGGER_ON=N
 SENSOR_NAME=""
@@ -11,13 +14,15 @@ function logger() {
 }
 
 #Get acceloremeter sensor name
-logger "Getting acceloremeter sensor name..."
-ACCEL=`termux-sensor -l | grep ACCE`
-if [ "$ACCEL" != "" ];
+logger "Getting acceloremeter sensor name from env variable..."
+ACCEL=$SENSOR_ACC_NAME
+if [ "$ACCEL" == "" ];
 then
-    SENSOR_NAME=`echo ${ACCEL} | tr -d '"'`
-    SENSOR_NAME=`echo ${SENSOR_NAME} | tr -d ','`
-    logger "SENSOR_NAME: "$SENSOR_NAME
+    logger "ERROR: SENSOR_NAME is not defined!"
+    echo "ERROR: SENSOR_NAME is not defined!"
+    echo "Please set from the ~/export-api-keys.sh in order to set env var..."
+    echo "Aborted. Please fix the issue first."
+    exit 0
 fi
 
 while :
