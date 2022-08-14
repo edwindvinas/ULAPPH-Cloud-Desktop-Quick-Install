@@ -6,6 +6,7 @@
 #cp ~/stop_ulapph.sh ./scripts-termux
 #cp ~/update_ulapph.sh ./scripts-termux
 cp ~/setalias_ulapph.sh ./scripts-termux/
+cp ~/fingerprint-lock.sh ./scripts-termux/
 
 #cp ~/.termux/boot/* ./scripts-termux-boot/
 

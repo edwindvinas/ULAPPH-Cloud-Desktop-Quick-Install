@@ -24,8 +24,8 @@ while :
 do
     logger "termux-sensor -c"
     termux-sensor -c
-    logger "termux-sensor -d 100 -n 10 -s \"$SENSOR_NAME\""
-    SENSORDATA=`termux-sensor -d 100 -n 10 -s "$SENSOR_NAME" | jq '.$SENSOR_NAME.values[0]'`
+    logger "termux-sensor -d 100 -n 10 -s \"${SENSOR_NAME}\""
+    SENSORDATA=`termux-sensor -d 100 -n 10 -s "${SENSOR_NAME}" | jq .${SENSOR_NAME}.values[0]`
     if [ "$SENSORDATA" != "" ];
     then
         echo $SENSORDATA
