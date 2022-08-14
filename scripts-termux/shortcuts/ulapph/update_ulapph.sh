@@ -23,6 +23,22 @@ echo -e "###############################################"
 TERMUX_HOME=/data/data/com.termux/files/home
 ULAPPH_HOME=/data/data/com.termux/files/home/go/src/github.com/edwindvinas
 
+#---------------------------------------------------------------------------
+echo -e "${Purple}###############################################${NC}"
+echo -e "${Cyan}Checking Fingerprint Authentication...${NC}"
+echo -e "${Cyan}Fingerprint is needed to upgrade this system...${NC}"
+echo -e "${Purple}###############################################${NC}"
+FP_AUTH=`termux-fingerprint | jq .auth_result`
+    echo $FP_AUTH
+    if [ "$FP_AUTH" == "\"AUTH_RESULT_SUCCESS\"" ]; 
+    then
+        #Auth was successful
+        echo -e "${Green}Good, Fingerprint Authentication...ok${NC}"
+    else
+        echo -e "${Red}Aborted, Fingerprint Authentication...failed!${NC}"
+        exit 0
+    fi
+
 echo -e "************************************************"
 echo -e "${Cyan}Downloading latest ULAPPH Cloud Desktop - Quick Install codes...${NC}"
 echo -e "************************************************"

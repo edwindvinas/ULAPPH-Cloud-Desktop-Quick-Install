@@ -51,7 +51,7 @@ translateToFilipino() {
 }
 function openURL() {
     echo "Open in browser..."
-    NEW_URL=""
+    NEW_URL=$@
     URL_IN=`echo $@ | awk -F'https' '{print $2}'`
     if [ "$URL_IN" == "" ];
     then

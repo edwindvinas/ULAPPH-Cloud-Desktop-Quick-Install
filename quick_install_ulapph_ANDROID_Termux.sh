@@ -123,6 +123,7 @@ do
 					mv main2.go main.go
 					#cp main.go main.go.deployed
 					#Remove current wallpapers
+                    mkdir -p $HOME/ULAPPH-Cloud-Desktop/static/img/wallpapers
 					rm $HOME/ULAPPH-Cloud-Desktop/static/img/wallpapers/*
 					#Overwrite wallpapers
 					cp $HOME/ULAPPH-Cloud-Desktop-WP/termux/* $HOME/ULAPPH-Cloud-Desktop/static/img/wallpapers/

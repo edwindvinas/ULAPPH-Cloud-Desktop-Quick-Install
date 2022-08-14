@@ -8,3 +8,6 @@ mkdir -p /data/data/com.termux/files/home/.shortcuts/
 cp -r ./scripts-termux/shortcuts/* /data/data/com.termux/files/home/.shortcuts/
 chmod 700 -R ~/.shortcuts/
 
+echo "Copying fingerprint-lock script to ~ ..."
+cp fingerprint-lock.sh ~
+
